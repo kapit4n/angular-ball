@@ -18,14 +18,11 @@ export class AppComponent {
   championships = [];
   teams = [];
 
-  currentChampion = {
-                      name: "Champiom",
-                      src: "http://www.footballbootsdb.com/logos/leagues/2.png"
-                    };
+  currentChampion: Championship;
 
   constructor(private _dialog: MdDialog, private _snackbar: MdSnackBar,
               private championshipService: ChampionshipService, private teamService: TeamService) {
-   
+     this.currentChampion = {id: 1, name: 'UEFA Champions League', src: 'http://www.footballbootsdb.com/logos/leagues/2.png', teams: []};
 	}
 
   openDialog() {
@@ -40,7 +37,13 @@ export class AppComponent {
 	}
 
   getChampionships(): void {
-    this.championshipService.getChampionships().then(championships => this.championships = championships);
+    this.championshipService.getChampionships().then(championships => {
+        this.championships = championships;
+        if (this.championships.length > 0) {
+          this.currentChampion = this.championships[0];          
+        }
+      }
+      );
   }
 
   getTeams(): void {
@@ -50,6 +53,14 @@ export class AppComponent {
   ngOnInit(): void {
     this.getChampionships();
     this.getTeams();
+  }
+
+  changeChampionship(event, championshipId: number) {
+    for(let i = 0; i < this.championships.length; i++) {
+      if (this.championships[i].id == championshipId) {
+        this.currentChampion = this.championships[i];
+      }
+    }
   }
 }
 

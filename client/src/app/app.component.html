@@ -2,7 +2,7 @@
     <md-sidenav #sidenav mode="side" class="app-sidenav">
         <md-list>
             <h3 md-subheader>Championships</h3>
-            <md-list-item *ngFor="let championship of championships">
+            <md-list-item *ngFor="let championship of championships" (click)="changeChampionship($event, championship.id)">
                 <img src="{{championship.src}}" class="md-avatar" style="width: 30px;">
                 <span>{{championship.name}}</span>
             </md-list-item>
@@ -24,7 +24,7 @@
         <md-card>
             <h1>Positions</h1>
             <md-list>
-                <md-list-item *ngFor="let team of teams">
+                <md-list-item *ngFor="let team of currentChampion.teams">
                     <div style="float: left; width: 80%;">
                         <img md-list-avatar src="{{team.src}}" alt="..." style="width: 30px; display: inline-block;">
                         <h3 style="display: inline-block;"> {{team.name}} </h3>
