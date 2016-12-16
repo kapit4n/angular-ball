@@ -10,18 +10,36 @@ export class AppComponent {
   title = 'app works!';
   isDarkTheme: boolean = false;
   lastDialogResult: string;
-
-  foods: any[] = [
-    {name: 'Pizza', rating: 'Excellent'},
-    {name: 'Burritos', rating: 'Great'},
-    {name: 'French fries', rating: 'Pretty good'},
+  championships = [
+    {
+      name: "Champiom",
+      src: "http://www.footballbootsdb.com/logos/leagues/2.png"
+    },
+    {
+      name: "Libertadores",
+      src: "https://www.vflnet.com/infos/conmebol/competitions/copa_libertadores/copa_toyota_libertadores.png"
+    }
   ];
-	progress: number = 0;
+  teams = [
+    {
+      name: "Barcelona",
+      src: "http://cdn.bleacherreport.net/images/team_logos/64x64/fc_barcelona.png",
+      points: 30
+    },
+    {
+      name: "Real Madrid",
+      src: "https://d1si3tbndbzwz9.cloudfront.net/soccer/team/44/small_logo.png",
+      points: 29
+    }
+  ];
+
+  currentChampion = {
+                      name: "Champiom",
+                      src: "http://www.footballbootsdb.com/logos/leagues/2.png"
+                    };
+
   constructor(private _dialog: MdDialog, private _snackbar: MdSnackBar) {
-    // Update the value for the progress-bar on an interval.
-    setInterval(() => {
-      this.progress = (this.progress + Math.floor(Math.random() * 4) + 1) % 100;
-    }, 200);
+   
 	}
 
   openDialog() {
