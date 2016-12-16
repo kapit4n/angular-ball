@@ -1,50 +1,35 @@
 import { Component, Optional } from '@angular/core';
 import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
+import { ChampionshipService } from './championship.service';
+import { Championship } from './championship';
+import { TeamService } from './team.service';
+import { Team } from './team';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [ChampionshipService, TeamService]
 })
 export class AppComponent {
   title = 'app works!';
   isDarkTheme: boolean = false;
   lastDialogResult: string;
-  championships = [
-    {
-      name: "Champiom",
-      src: "http://www.footballbootsdb.com/logos/leagues/2.png"
-    },
-    {
-      name: "Libertadores",
-      src: "https://www.vflnet.com/infos/conmebol/competitions/copa_libertadores/copa_toyota_libertadores.png"
-    }
-  ];
-  teams = [
-    {
-      name: "Barcelona",
-      src: "http://cdn.bleacherreport.net/images/team_logos/64x64/fc_barcelona.png",
-      points: 30
-    },
-    {
-      name: "Real Madrid",
-      src: "https://d1si3tbndbzwz9.cloudfront.net/soccer/team/44/small_logo.png",
-      points: 29
-    }
-  ];
+  championships = [];
+  teams = [];
 
   currentChampion = {
                       name: "Champiom",
                       src: "http://www.footballbootsdb.com/logos/leagues/2.png"
                     };
 
-  constructor(private _dialog: MdDialog, private _snackbar: MdSnackBar) {
+  constructor(private _dialog: MdDialog, private _snackbar: MdSnackBar,
+              private championshipService: ChampionshipService, private teamService: TeamService) {
    
 	}
 
   openDialog() {
     let dialogRef = this._dialog.open(DialogContent);
-
     dialogRef.afterClosed().subscribe(result => {
       this.lastDialogResult = result;
     })
@@ -53,6 +38,19 @@ export class AppComponent {
   showSnackbar() {
     this._snackbar.open('YUM SNACKS', 'CHEW');
 	}
+
+  getChampionships(): void {
+    this.championshipService.getChampionships().then(championships => this.championships = championships);
+  }
+
+  getTeams(): void {
+    this.teamService.getTeams().then(teams => this.teams = teams);
+  }
+
+  ngOnInit(): void {
+    this.getChampionships();
+    this.getTeams();
+  }
 }
 
 
