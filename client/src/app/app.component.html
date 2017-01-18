@@ -1,10 +1,17 @@
 <md-sidenav-layout [class.m2app-dark]="isDarkTheme">
     <md-sidenav #sidenav mode="side" class="app-sidenav">
         <md-list>
-            <h3 md-subheader>Championships</h3>
+            <h3 md-subheader>Championships <button md-button >+</button></h3>
             <md-list-item *ngFor="let championship of championships" (click)="changeChampionship($event, championship.id)">
                 <img src="{{championship.src}}" class="md-avatar" style="width: 30px;">
                 <span>{{championship.name}}</span>
+            </md-list-item>
+        </md-list>
+        <md-list>
+            <h3 md-subheader>Teams <button md-button >+</button></h3>
+            <md-list-item *ngFor="let team of teams" (click)="changeChampionship($event, championship.id)">
+                <img src="{{team.src}}" class="md-avatar" style="width: 30px;">
+                <span>{{team.name}}</span>
             </md-list-item>
         </md-list>
     </md-sidenav>
