@@ -55,5 +55,9 @@
   "match": {
     "dataSource": "db",
     "public": true
+  },
+  "teamPlayer": {
+    "dataSource": "db",
+    "public": true
   }
 }
