@@ -1,0 +1,27 @@
+{
+  "name": "match",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "matchDate": {
+      "type": "date",
+      "required": true
+    },
+    "teamAGoals": {
+      "type": "number"
+    },
+    "teamBGoals": {
+      "type": "number"
+    },
+    "winnerTeam": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

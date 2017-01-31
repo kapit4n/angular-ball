@@ -1,0 +1,23 @@
+{
+  "name": "teamChampionshipRow",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "subDate": {
+      "type": "date",
+      "required": true
+    },
+    "points": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
