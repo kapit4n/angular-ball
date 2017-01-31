@@ -17,7 +17,18 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "championshipRow": {
+      "type": "belongsTo",
+      "model": "championshipRow",
+      "foreignKey": "id"
+    },
+    "team": {
+      "type": "belongsTo",
+      "model": "team",
+      "foreignKey": "id"
+    }
+  },
   "acls": [],
   "methods": {}
 }

@@ -16,7 +16,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "championship": {
+      "type": "belongsTo",
+      "model": "championship",
+      "foreignKey": "id"
+    }
+  },
   "acls": [],
   "methods": {}
 }
