@@ -3,6 +3,8 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 import { ChampionshipService } from './championship.service';
 import { Championship } from './championship';
 import { TeamService } from './team.service';
+import { TeamAddComponent } from './team/team-add/team-add.component';
+import { TeamListComponent } from './team/team-list/team-list.component';
 import { Team } from './team';
 
 @Component({

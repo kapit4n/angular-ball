@@ -1,18 +1,16 @@
 <md-sidenav-layout [class.m2app-dark]="isDarkTheme">
     <md-sidenav #sidenav mode="side" class="app-sidenav">
         <md-list>
-            <h3 md-subheader>Championships <button md-button >+</button></h3>
+            <h3 md-subheader>Championships </h3>
             <md-list-item *ngFor="let championship of championships" (click)="changeChampionship($event, championship.id)">
                 <img src="{{championship.src}}" class="md-avatar" style="width: 30px;">
                 <span>{{championship.name}}</span>
             </md-list-item>
         </md-list>
         <md-list>
-            <h3 md-subheader>Teams <button md-button >+</button></h3>
-            <md-list-item *ngFor="let team of teams" (click)="changeChampionship($event, championship.id)">
-                <img src="{{team.src}}" class="md-avatar" style="width: 30px;">
-                <span>{{team.name}}</span>
-            </md-list-item>
+            <h3 md-subheader>Teams</h3>
+            <a class="btn-floating btn-large waves-effect waves-light red" routerLink="/team-add" routerLinkActive="active" ><i class="material-icons">add</i></a>    
+            <a routerLink="/team-list" routerLinkActive="active"><i class="material-icons">list</i></a>
         </md-list>
     </md-sidenav>
     <md-toolbar color="primary">
@@ -24,6 +22,7 @@
         <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
     </md-toolbar>
     <div class="app-content">
+        <router-outlet></router-outlet>
         <md-card>
             <h1>{{currentChampion.name}}</h1>
             <img src="{{currentChampion.src}}" class="md-avatar" style="width: 150px;">

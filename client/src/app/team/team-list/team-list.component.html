@@ -1,3 +1,7 @@
-<p>
-  team-list works!
-</p>
+<md-list>
+    <h3 md-subheader>Teams <button md-button >+</button></h3>
+    <md-list-item *ngFor="let team of teams">
+        <img src="{{team.src}}" class="md-avatar" style="width: 30px;">
+        <span>{{team.name}}</span>
+    </md-list-item>
+</md-list>
