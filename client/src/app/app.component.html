@@ -9,7 +9,7 @@
         </md-list>
         <md-list>
             <h3 md-subheader>Teams</h3>
-            <a class="btn-floating btn-large waves-effect waves-light red" routerLink="/team-add" routerLinkActive="active" ><i class="material-icons">add</i></a>    
+            <a class="btn-floating btn-large waves-effect waves-light red" routerLink="/team-add" routerLinkActive="active"><i class="material-icons">add</i></a>
             <a routerLink="/team-list" routerLinkActive="active"><i class="material-icons">list</i></a>
         </md-list>
     </md-sidenav>
@@ -23,21 +23,28 @@
     </md-toolbar>
     <div class="app-content">
         <router-outlet></router-outlet>
-        <md-card>
-            <h1>{{currentChampion.name}}</h1>
-            <img src="{{currentChampion.src}}" class="md-avatar" style="width: 150px;">
-        </md-card>
-        <md-card>
-            <h1>Positions</h1>
-            <md-list>
-                <md-list-item *ngFor="let team of currentChampion.teams">
-                    <div style="float: left; width: 80%;">
-                        <img md-list-avatar src="{{team.src}}" alt="..." style="width: 30px; display: inline-block;">
-                        <h3 style="display: inline-block;"> {{team.name}} </h3>
+        <div class="row">
+            <div class="col s12 m7">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{currentChampion.src}}" style="width: 30%;">
+                        <span class="card-title">{{currentChampion.name}}</span>
                     </div>
-                    <span style="float: right;">{{team.points}}</span>
-                </md-list-item>
-            </md-list>
-        </md-card>
+                    <div class="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="collection" *ngFor="let team of currentChampion.teams">
+            <li class="collection-item avatar">
+                <img src="{{team.src}}" alt="" class="circle">
+                <span class="title">{{team.name}}</span>
+                <p>Points: {{team.points}}</p>
+            </li>
+        </ul>
     </div>
 </md-sidenav-layout>
