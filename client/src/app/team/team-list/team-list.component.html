@@ -1,7 +1,10 @@
-<md-list>
-    <h3 md-subheader>Teams <button md-button >+</button></h3>
-    <md-list-item *ngFor="let team of teams">
-        <img src="{{team.src}}" class="md-avatar" style="width: 30px;">
-        <span>{{team.name}}</span>
-    </md-list-item>
-</md-list>
+<ul class="collection">
+    <li class="collection-item avatar" *ngFor="let team of teams">
+        <img src="{{team.src}}" alt="" class="circle">
+        <span class="title">{{team.name}}</span>
+        <p>First Line
+            <br> Second Line
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+</ul>
