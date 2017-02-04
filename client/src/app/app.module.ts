@@ -11,16 +11,31 @@ import { TeamEditComponent } from './team/team-edit/team-edit.component';
 import { TeamAddComponent } from './team/team-add/team-add.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
 import { TeamShowComponent } from './team/team-show/team-show.component';
-
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ChampionshipShowComponent } from './championship/championship-show/championship-show.component';
+import { ChampionshipEditComponent } from './championship/championship-edit/championship-edit.component';
+import { ChampionshipAddComponent } from './championship/championship-add/championship-add.component';
+import { ChampionshipListComponent } from './championship/championship-list/championship-list.component';
 
 const appRoutes: Routes = [
+  { path: 'team-add', component: TeamAddComponent },
+  { path: 'team-list', component: TeamListComponent },
+  { path: '', component: AppComponent },
+  { path: '**', component: PageNotFoundComponent }
+];
+
+const appRoutes2: Routes = [
   { path: 'team-add', component: TeamAddComponent },
   { path: 'team-list', component: TeamListComponent },
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, DialogContent, TeamEditComponent, TeamAddComponent, TeamShowComponent, TeamEditComponent, TeamAddComponent, TeamListComponent, TeamShowComponent
+    AppComponent, DialogContent,
+    TeamEditComponent, TeamAddComponent,
+    TeamShowComponent, TeamEditComponent,
+    TeamAddComponent, TeamListComponent,
+    TeamShowComponent, PageNotFoundComponent, ChampionshipShowComponent, ChampionshipEditComponent, ChampionshipAddComponent, ChampionshipListComponent
   ],
   imports: [
     BrowserModule,
