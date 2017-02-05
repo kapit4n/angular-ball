@@ -16,14 +16,28 @@ import { ChampionshipShowComponent } from './championship/championship-show/cham
 import { ChampionshipEditComponent } from './championship/championship-edit/championship-edit.component';
 import { ChampionshipAddComponent } from './championship/championship-add/championship-add.component';
 import { ChampionshipListComponent } from './championship/championship-list/championship-list.component';
+import { TeamComponent } from './team/team/team.component';
+import { ChampionshipComponent } from './championship/championship/championship.component';
 
 const appRoutes: Routes = [
-  { path: 'team-add', component: TeamAddComponent },
-  { path: 'team-list', component: TeamListComponent },
-  { path: 'team-show/:id', component: TeamListComponent },
-  { path: 'championship-list', component: ChampionshipListComponent },
-  { path: 'championship-show', component: ChampionshipShowComponent },
   { path: '', component: AppComponent },
+  {
+    path: 'team', component: TeamComponent,
+    children: [
+      { path: '', component: TeamListComponent },
+      { path: 'add', component: TeamAddComponent },
+      { path: 'show/:id', component: TeamListComponent }
+    ]
+  },
+  {
+    path: 'championship-list',
+    component: ChampionshipComponent,
+    children: [
+      { path: '', component: TeamListComponent },
+      { path: 'add', component: TeamAddComponent },
+      { path: 'show/:id', component: ChampionshipShowComponent }
+    ]
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -38,7 +52,7 @@ const appRoutes2: Routes = [
     TeamEditComponent, TeamAddComponent,
     TeamShowComponent, TeamEditComponent,
     TeamAddComponent, TeamListComponent,
-    TeamShowComponent, PageNotFoundComponent, ChampionshipShowComponent, ChampionshipEditComponent, ChampionshipAddComponent, ChampionshipListComponent
+    TeamShowComponent, PageNotFoundComponent, ChampionshipShowComponent, ChampionshipEditComponent, ChampionshipAddComponent, ChampionshipListComponent, TeamComponent, ChampionshipComponent
   ],
   imports: [
     BrowserModule,
