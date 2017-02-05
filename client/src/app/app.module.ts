@@ -20,6 +20,7 @@ import { ChampionshipListComponent } from './championship/championship-list/cham
 const appRoutes: Routes = [
   { path: 'team-add', component: TeamAddComponent },
   { path: 'team-list', component: TeamListComponent },
+  { path: 'team-show/:id', component: TeamListComponent },
   { path: 'championship-list', component: ChampionshipListComponent },
   { path: 'championship-show', component: ChampionshipShowComponent },
   { path: '', component: AppComponent },

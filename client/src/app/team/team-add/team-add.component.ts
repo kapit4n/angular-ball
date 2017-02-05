@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Team } from '../../team';
 
 @Component({
   selector: 'app-team-add',
@@ -7,17 +8,16 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./team-add.component.css']
 })
 export class TeamAddComponent implements OnInit {
-  name: string;
-  description: string;
-  icon: string;
+  team: Team;
 
-  constructor() { }
+  constructor() {
+    this.team = {id: 0, name: "", src: "", points: 0};
+  }
 
   ngOnInit() {
   }
 
   save() {
-    console.log("send to service" + this.name);
+    console.log("send to service" + this.team.name);
   }
-
 }
