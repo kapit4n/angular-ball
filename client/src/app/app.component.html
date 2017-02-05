@@ -2,18 +2,11 @@
     <md-sidenav #sidenav mode="side" class="app-sidenav">
         <md-list>
             <h3 md-subheader>Championships </h3>
-            <a routerLink="/championship/list" routerLinkActive="active"><i class="material-icons">Championship list</i></a>
-        </md-list>
-        <md-list>
-            <md-list-item *ngFor="let championship of championships" (click)="changeChampionship($event, championship.id)">
-                <img src="{{championship.src}}" class="md-avatar" style="width: 30px;">
-                <a routerLink="/championship/show" routerLinkActive="active">{{championship.name}}</a>
-            </md-list-item>
+            <a routerLink="/championship" routerLinkActive="active"><i class="material-icons">Championship list</i></a>
         </md-list>
         <md-list>
             <h3 md-subheader>Teams</h3>
-            <a class="btn-floating btn-large waves-effect waves-light red" routerLink="/team/add" routerLinkActive="active"><i class="material-icons">add</i></a>
-            <a routerLink="/team/list" routerLinkActive="active"><i class="material-icons">list</i></a>
+            <a routerLink="/team" routerLinkActive="active"><i class="material-icons">list</i></a>
         </md-list>
     </md-sidenav>
     <md-toolbar color="primary">

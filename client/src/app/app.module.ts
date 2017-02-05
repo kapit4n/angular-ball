@@ -30,11 +30,11 @@ const appRoutes: Routes = [
     ]
   },
   {
-    path: 'championship-list',
+    path: 'championship',
     component: ChampionshipComponent,
     children: [
-      { path: '', component: TeamListComponent },
-      { path: 'add', component: TeamAddComponent },
+      { path: '', component: ChampionshipListComponent },
+      { path: 'add', component: ChampionshipAddComponent },
       { path: 'show/:id', component: ChampionshipShowComponent }
     ]
   },
