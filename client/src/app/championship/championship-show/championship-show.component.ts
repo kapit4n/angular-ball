@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChampionshipService } from '../../championship.service';
 import { Championship } from '../../championship';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,14 +10,16 @@ import { Championship } from '../../championship';
   styleUrls: ['./championship-show.component.css'],
   providers: [ChampionshipService]
 })
+
 export class ChampionshipShowComponent implements OnInit {
   championships = [];
-	currentChampion: Championship;
+  championship: Championship;
+  id: any;
+  paramsSub: any;
 
-
-  constructor(private championshipService: ChampionshipService) { 
-  this.currentChampion = {id: 1, name: 'UEFA Champions League', src: 'http://www.footballbootsdb.com/logos/leagues/2.png', teams: []};
-
+  constructor(private activatedRoute: ActivatedRoute, private championshipService: ChampionshipService) {
+    this.paramsSub = this.activatedRoute.params.subscribe(params => this.id = parseInt(params['id'], 10));
+    this.championship = {id: 1, name: 'UEFA Champions League', src: 'http://www.footballbootsdb.com/logos/leagues/2.png', teams: []};
   }
 
   ngOnInit() {
@@ -27,11 +30,17 @@ export class ChampionshipShowComponent implements OnInit {
   getChampionships(): void {
     this.championshipService.getChampionships().then(championships => {
         this.championships = championships;
-        if (this.championships.length > 0) {
-          this.currentChampion = this.championships[0];          
+        for(let i = 0; i < this.championships.length; i++) {
+          if (this.championships[i].id == this.id) {
+            this.championship = this.championships[i];
+          }
         }
       }
       );
+  }
+
+  ngOnDestroy() {
+    this.paramsSub.unsubscribe();
   }
 
 }

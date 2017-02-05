@@ -26,7 +26,7 @@ export class AppComponent {
   constructor(private _dialog: MdDialog, private _snackbar: MdSnackBar,
               private championshipService: ChampionshipService, private teamService: TeamService) {
      this.currentChampion = {id: 1, name: 'UEFA Champions League', src: 'http://www.footballbootsdb.com/logos/leagues/2.png', teams: []};
-	}
+  }
 
   openDialog() {
     let dialogRef = this._dialog.open(DialogContent);
@@ -37,7 +37,7 @@ export class AppComponent {
 
   showSnackbar() {
     this._snackbar.open('YUM SNACKS', 'CHEW');
-	}
+  }
 
   getChampionships(): void {
     this.championshipService.getChampionships().then(championships => {
@@ -66,7 +66,6 @@ export class AppComponent {
     }
   }
 }
-
 
 @Component({
   template: `

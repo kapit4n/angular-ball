@@ -10,6 +10,7 @@ import { Championship } from '../../championship';
 })
 export class ChampionshipListComponent implements OnInit {
 	championships = [];
+  
   constructor(private championshipService: ChampionshipService) { }
 
   ngOnInit() {
@@ -19,7 +20,6 @@ export class ChampionshipListComponent implements OnInit {
   getChampionships(): void {
     this.championshipService.getChampionships().then(championships => {
         this.championships = championships;
-      }
-      );
+      } );
   }
 }

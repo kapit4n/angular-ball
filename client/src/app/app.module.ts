@@ -26,7 +26,7 @@ const appRoutes: Routes = [
     children: [
       { path: '', component: TeamListComponent },
       { path: 'add', component: TeamAddComponent },
-      { path: 'show/:id', component: TeamListComponent }
+      { path: 'show/:id', component: TeamShowComponent }
     ]
   },
   {
@@ -39,11 +39,6 @@ const appRoutes: Routes = [
     ]
   },
   { path: '**', component: PageNotFoundComponent }
-];
-
-const appRoutes2: Routes = [
-  { path: 'team-add', component: TeamAddComponent },
-  { path: 'team-list', component: TeamListComponent },
 ];
 
 @NgModule({

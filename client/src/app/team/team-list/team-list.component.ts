@@ -21,6 +21,4 @@ export class TeamListComponent implements OnInit {
   getTeams(): void {
     this.teamService.getTeams().then(teams => this.teams = teams);
   }
-
-
 }

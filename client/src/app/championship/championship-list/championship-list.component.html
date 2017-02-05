@@ -1,8 +1,8 @@
 <div style="height: 600px;">
-	<md-list>
-	    <md-list-item *ngFor="let championship of championships">
-	        <img src="{{championship.src}}" class="md-avatar" style="width: 30px;">
-	        <a routerLink="/championship/show/{{championship.id}}" routerLinkActive="active">{{championship.name}}</a>
-	    </md-list-item>
-	</md-list>
+  <md-list>
+    <md-list-item *ngFor="let championship of championships">
+      <img src="{{championship.src}}" class="md-avatar" style="width: 30px;">
+      <a routerLink="/championship/show/{{championship.id}}" routerLinkActive="active">{{championship.name}}</a>
+    </md-list-item>
+  </md-list>
 </div>

@@ -1,23 +1,23 @@
 <div class="row">
-    <div class="col s12 m7">
-        <div class="card">
-            <div class="card-image">
-                <img src="{{currentChampion.src}}" style="width: 30%;">
-                <span class="card-title">{{currentChampion.name}}</span>
-            </div>
-            <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-                <a href="#">This is a link</a>
-            </div>
-        </div>
+  <div class="col s12 m7">
+    <div class="card">
+      <div class="card-image">
+        <img src="{{championship.src}}" style="width: 30%;">
+        <span class="card-title">{{championship.name}}</span>
+      </div>
+      <div class="card-content">
+        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+      </div>
+      <div class="card-action">
+        <a href="/championship">Back to list</a>
+      </div>
     </div>
+  </div>
 </div>
-<ul class="collection" *ngFor="let team of currentChampion.teams">
-    <li class="collection-item avatar">
-        <img src="{{team.src}}" alt="" class="circle">
-        <span class="title">{{team.name}}</span>
-        <p>Points: {{team.points}}</p>
-    </li>
+<ul class="collection" *ngFor="let team of championship.teams">
+  <li class="collection-item avatar">
+    <img src="{{team.src}}" alt="" class="circle">
+    <a [routerLink]="['/team/show', team.id]" ><span class="title">{{team.name}}</span></a>
+    <p>Points: {{team.points}}</p>
+  </li>
 </ul>
