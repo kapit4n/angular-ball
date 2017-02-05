@@ -2,9 +2,12 @@
     <md-sidenav #sidenav mode="side" class="app-sidenav">
         <md-list>
             <h3 md-subheader>Championships </h3>
+            <a routerLink="/championship-list" routerLinkActive="active"><i class="material-icons">Championship list</i></a>
+        </md-list>
+        <md-list>
             <md-list-item *ngFor="let championship of championships" (click)="changeChampionship($event, championship.id)">
                 <img src="{{championship.src}}" class="md-avatar" style="width: 30px;">
-                <span>{{championship.name}}</span>
+                <a routerLink="/championship-show" routerLinkActive="active">{{championship.name}}</a>
             </md-list-item>
         </md-list>
         <md-list>
@@ -23,28 +26,5 @@
     </md-toolbar>
     <div class="app-content">
         <router-outlet></router-outlet>
-        <div class="row">
-            <div class="col s12 m7">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="{{currentChampion.src}}" style="width: 30%;">
-                        <span class="card-title">{{currentChampion.name}}</span>
-                    </div>
-                    <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <ul class="collection" *ngFor="let team of currentChampion.teams">
-            <li class="collection-item avatar">
-                <img src="{{team.src}}" alt="" class="circle">
-                <span class="title">{{team.name}}</span>
-                <p>Points: {{team.points}}</p>
-            </li>
-        </ul>
     </div>
 </md-sidenav-layout>

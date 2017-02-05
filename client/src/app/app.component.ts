@@ -7,6 +7,7 @@ import { TeamAddComponent } from './team/team-add/team-add.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
 import { Team } from './team';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
