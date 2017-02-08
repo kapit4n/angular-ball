@@ -6,7 +6,7 @@ import { TeamService } from './team.service';
 import { TeamAddComponent } from './team/team-add/team-add.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
 import { Team } from './team';
-
+import { LoopBackConfig } from '../../sdk/index';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +25,8 @@ export class AppComponent {
 
   constructor(private _dialog: MdDialog, private _snackbar: MdSnackBar,
               private championshipService: ChampionshipService, private teamService: TeamService) {
+    LoopBackConfig.setBaseURL('http://127.0.0.1:3000');
+    LoopBackConfig.setApiVersion('api');
      this.currentChampion = {id: 1, name: 'UEFA Champions League', src: 'http://www.footballbootsdb.com/logos/leagues/2.png', teams: []};
   }
 
