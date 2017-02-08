@@ -1,5 +1,5 @@
+<a class="btn-floating btn waves-effect waves-light red" routerLink="/team/add" routerLinkActive="active"><i class="material-icons">add</i></a>
 <ul class="collection">
-	<a class="btn-floating btn waves-effect waves-light red" routerLink="/team/add" routerLinkActive="active"><i class="material-icons">add</i></a>
 	<li class="collection-item avatar" *ngFor="let team of teams">
     <img src="{{team.src}}" alt="" class="circle">
     <a [routerLink]="['/team/show', team.id]" ><span class="title">{{team.name}}</span></a>
@@ -9,3 +9,4 @@
     <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
 	</li>
 </ul>
+<a class="btn-floating btn waves-effect waves-light red" routerLink="/team/add" routerLinkActive="active"><i class="material-icons">add</i></a>

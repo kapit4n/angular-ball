@@ -26,7 +26,8 @@ const appRoutes: Routes = [
     children: [
       { path: '', component: TeamListComponent },
       { path: 'add', component: TeamAddComponent },
-      { path: 'show/:id', component: TeamShowComponent }
+      { path: 'show/:id', component: TeamShowComponent },
+      { path: 'edit/:id', component: TeamEditComponent }
     ]
   },
   {
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     children: [
       { path: '', component: ChampionshipListComponent },
       { path: 'add', component: ChampionshipAddComponent },
-      { path: 'show/:id', component: ChampionshipShowComponent }
+      { path: 'show/:id', component: ChampionshipShowComponent },
+      { path: 'edit/:id', component: ChampionshipEditComponent }
     ]
   },
   { path: '**', component: PageNotFoundComponent }
