@@ -1,5 +1,5 @@
 import { Component, Optional } from '@angular/core';
-import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
+import { MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 import { ChampionshipService } from './championship.service';
 import { Championship } from './championship';
 import { TeamService } from './team.service';
@@ -7,6 +7,8 @@ import { TeamAddComponent } from './team/team-add/team-add.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
 import { Team } from './team';
 import { LoopBackConfig } from '../../sdk/index';
+import { User, AccessToken }  from '../../sdk/models';
+import { UserApi }            from '../../sdk/services';
 
 @Component({
   selector: 'app-root',
@@ -20,13 +22,16 @@ export class AppComponent {
   lastDialogResult: string;
   championships = [];
   teams = [];
+  user: User = new User();
 
   currentChampion: Championship;
 
   constructor(private _dialog: MdDialog, private _snackbar: MdSnackBar,
-              private championshipService: ChampionshipService, private teamService: TeamService) {
+              private championshipService: ChampionshipService, private teamService: TeamService,
+              private userApi: UserApi) {
     LoopBackConfig.setBaseURL('http://127.0.0.1:3000');
     LoopBackConfig.setApiVersion('api');
+
      this.currentChampion = {id: 1, name: 'UEFA Champions League', src: 'http://www.footballbootsdb.com/logos/leagues/2.png', teams: []};
   }
 
@@ -67,7 +72,16 @@ export class AppComponent {
       }
     }
   }
+
+  signup(): void {
+      this.userApi.create(this.user).subscribe((user: User) => this.signin());
+  }
+
+  signin(): void {
+      this.userApi.login(this.user).subscribe((token: AccessToken) => alert('Fake Redirect'));
+  }
 }
+
 
 @Component({
   template: `
