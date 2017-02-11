@@ -5,16 +5,15 @@ import { Championship } from './championship';
 import { TeamService } from './team.service';
 import { TeamAddComponent } from './team/team-add/team-add.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
-import { Team } from './team';
 import { LoopBackConfig } from '../../sdk/index';
-import { User, AccessToken }  from '../../sdk/models';
-import { UserApi }            from '../../sdk/services';
+import { User, AccessToken, Team }  from '../../sdk/models';
+import { UserApi, TeamApi }            from '../../sdk/services';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [ChampionshipService, TeamService, UserApi]
+  providers: [ChampionshipService, TeamService, UserApi, TeamApi]
 })
 export class AppComponent {
   title = 'app works!';
@@ -22,17 +21,29 @@ export class AppComponent {
   lastDialogResult: string;
   championships = [];
   teams = [];
+  team: Team;
   user: User = new User();
 
   currentChampion: Championship;
 
   constructor(private _dialog: MdDialog, private _snackbar: MdSnackBar,
               private championshipService: ChampionshipService, private teamService: TeamService,
-              private userApi: UserApi) {
+              private userApi: UserApi, private teamApi : TeamApi) {
     LoopBackConfig.setBaseURL('http://127.0.0.1:3000');
     LoopBackConfig.setApiVersion('api');
+    this.currentChampion = {id: 1, name: 'UEFA Champions League', src: 'http://www.footballbootsdb.com/logos/leagues/2.png', teams: []};
+    this.user = new User();
+    this.user.email = "admin@gmail.com";
+    this.user.password = "admin";
+    this.signin();
+    this.getTeam(2);
+  }
 
-     this.currentChampion = {id: 1, name: 'UEFA Champions League', src: 'http://www.footballbootsdb.com/logos/leagues/2.png', teams: []};
+  getTeam(id: any): void {
+      this.teamApi.findById(id).subscribe((team: Team) => {
+        this.team = team;
+        console.log("This is the team " + team.name); 
+      });
   }
 
   openDialog() {
@@ -78,7 +89,9 @@ export class AppComponent {
   }
 
   signin(): void {
-      this.userApi.login(this.user).subscribe((token: AccessToken) => alert('Fake Redirect'));
+      this.userApi.login(this.user).subscribe((token: AccessToken) => { 
+        console.log("This is the login access");
+      });
   }
 }
 
