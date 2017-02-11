@@ -14,7 +14,7 @@ import { UserApi }            from '../../sdk/services';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [ChampionshipService, TeamService]
+  providers: [ChampionshipService, TeamService, UserApi]
 })
 export class AppComponent {
   title = 'app works!';
