@@ -49,6 +49,12 @@ import { SocketBrowser } from './sockets/socket.browser';
 import { RealTime } from './services/core/real.time';
 import { UserApi } from './services/custom/User';
 import { TeamApi } from './services/custom/Team';
+import { PlayerApi } from './services/custom/Player';
+import { ChampionshipApi } from './services/custom/Championship';
+import { ChampionshipRowApi } from './services/custom/ChampionshipRow';
+import { TeamChampionshipRowApi } from './services/custom/TeamChampionshipRow';
+import { MatchApi } from './services/custom/Match';
+import { TeamPlayerApi } from './services/custom/TeamPlayer';
 /**
 * @module SDKBrowserModule
 * @description
@@ -79,6 +85,12 @@ export class SDKBrowserModule {
         RealTime,
         UserApi,
         TeamApi,
+        PlayerApi,
+        ChampionshipApi,
+        ChampionshipRowApi,
+        TeamChampionshipRowApi,
+        MatchApi,
+        TeamPlayerApi,
         { provide: InternalStorage, useClass: CookieBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }
       ]

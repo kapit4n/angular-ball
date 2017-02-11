@@ -10,6 +10,9 @@
       "type": "string",
       "required": true
     },
+    "avatarUrl": {
+      "type": "string"
+    },
     "biography": {
       "type": "string"
     }

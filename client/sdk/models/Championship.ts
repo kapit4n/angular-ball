@@ -1,36 +1,36 @@
 /* tslint:disable */
 
 declare var Object: any;
-export interface TeamInterface {
+export interface ChampionshipInterface {
   name: string;
   logoUrl?: string;
-  description: string;
+  description?: string;
   id?: number;
 }
 
-export class Team implements TeamInterface {
+export class Championship implements ChampionshipInterface {
   name: string;
   logoUrl: string;
   description: string;
   id: number;
-  constructor(data?: TeamInterface) {
+  constructor(data?: ChampionshipInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `Team`.
+   * i.e. `Championship`.
    */
   public static getModelName() {
-    return "Team";
+    return "Championship";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of Team for dynamic purposes.
+  * This method creates an instance of Championship for dynamic purposes.
   **/
-  public static factory(data: TeamInterface): Team{
-    return new Team(data);
+  public static factory(data: ChampionshipInterface): Championship{
+    return new Championship(data);
   }  
   /**
   * @method getModelDefinition
@@ -41,8 +41,8 @@ export class Team implements TeamInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'Team',
-      plural: 'Teams',
+      name: 'Championship',
+      plural: 'Championships',
       properties: {
         name: {
           name: 'name',
