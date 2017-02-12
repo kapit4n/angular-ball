@@ -1,12 +1,14 @@
 <div style="min-height: 600px;">
-	<a class="btn-floating btn waves-effect waves-light red" routerLink="/championship/add" routerLinkActive="active"><i class="material-icons">add</i></a>
-	<div style="height: 600px;">
-	  <md-list>
-	    <md-list-item *ngFor="let row of data">
-	      <img src="{{row.logoUrl}}" class="md-avatar" style="width: 30px;">
-	      <a routerLink="/championship/show/{{row.id}}" routerLinkActive="active">{{row.name}}</a>
-	    </md-list-item>
-	  </md-list>
-	</div>
-	<a class="btn-floating btn waves-effect waves-light red" routerLink="/championship/add" routerLinkActive="active"><i class="material-icons">add</i></a>
+  <a class="btn-floating btn waves-effect waves-light red" routerLink="/championship/add" routerLinkActive="active"><i class="material-icons">add</i></a>
+  <ul class="collection with-header">
+    <li class="collection-header"><h4>CHAMPIONSHIP LIST</h4></li>
+    <li class="collection-item avatar" *ngFor="let row of data">
+      <img src="{{row.logoUrl}}" alt="" class="circle">
+      <a [routerLink]="['/championship/show', row.id]" ><span class="title">{{row.name}}</span></a>
+      <p>
+        {{row.description}}
+      </p>
+    </li>
+  </ul>
+  <a class="btn-floating btn waves-effect waves-light red" routerLink="/championship/add" routerLinkActive="active"><i class="material-icons">add</i></a>
 </div>
