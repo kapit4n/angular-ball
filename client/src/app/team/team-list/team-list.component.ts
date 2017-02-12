@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamService } from '../../team.service';
-import { Team } from '../../team';
+import { TeamApi }            from '../../../../sdk/services';
+import { Team }  from '../../../../sdk/models';
+import {LoadListDataInterface} from '../../loadListDataInterface'
 
 
 @Component({
@@ -8,17 +9,18 @@ import { Team } from '../../team';
   templateUrl: './team-list.component.html',
   styleUrls: ['./team-list.component.css']
 })
-export class TeamListComponent implements OnInit {
-  championships = [];
-  teams = [];
+export class TeamListComponent implements OnInit, LoadListDataInterface {
+  data = [];
 
-  constructor(private teamService: TeamService) { }
+  constructor(private dataApi: TeamApi) { }
 
   ngOnInit() {
-  	this.getTeams();
+  	this.loadData();
   }
 
-  getTeams(): void {
-    this.teamService.getTeams().then(teams => this.teams = teams);
+  loadData(): void {
+    this.dataApi.find({}).subscribe((data) => {
+      this.data = data;
+    });
   }
 }

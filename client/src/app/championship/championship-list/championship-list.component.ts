@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ChampionshipService } from '../../championship.service';
-//import { Championship } from '../../championship';
 import { ChampionshipApi }            from '../../../../sdk/services';
 import { Championship }  from '../../../../sdk/models';
 import {LoadListDataInterface} from '../../loadListDataInterface'

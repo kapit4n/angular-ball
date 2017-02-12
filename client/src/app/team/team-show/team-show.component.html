@@ -1,14 +1,14 @@
-<a class="btn-floating btn-large red" [routerLink]="['/team/team', team.id]">
+<a class="btn-floating btn-large red" [routerLink]="['/team/team', data.id]">
   <i class="large material-icons">mode_edit</i>
 </a>
 <div class="row">
   <div class="col s12 m7">
     <div class="card">
       <div class="card-image">
-        <img src="{{team.src}}" style="width: 30%;">
-        <span class="card-title">{{team.name}}</span>
+        <img src="{{data.logoUrl}}" style="width: 30%;">
+        <span class="card-title">{{data.name}}</span>
       </div>
-      <span class="card-title">{{team.id}}</span>
+      <span class="card-title">{{data.id}}</span>
       <span class="card-title">{{id}}</span>
       <div class="card-content">
         <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
