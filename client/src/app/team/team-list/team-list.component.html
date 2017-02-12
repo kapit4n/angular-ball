@@ -8,6 +8,7 @@
       <p>
         {{row.description}}
       </p>
+      <a class="btn-floating btn waves-effect waves-light red" (click)="delete(row.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
     </li>
   </ul>
   <a class="btn-floating btn waves-effect waves-light red" routerLink="/team/add" routerLinkActive="active"><i class="material-icons">add</i></a>

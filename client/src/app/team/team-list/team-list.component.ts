@@ -23,4 +23,10 @@ export class TeamListComponent implements OnInit, LoadListDataInterface {
       this.data = data;
     });
   }
+
+  delete(id: any): void {
+    this.dataApi.deleteById(id).subscribe((data) => {
+      this.loadData();
+    });
+  }
 }

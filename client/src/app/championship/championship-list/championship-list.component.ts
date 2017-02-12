@@ -24,8 +24,12 @@ export class ChampionshipListComponent implements OnInit, LoadListDataInterface 
   loadData(): void {
     this.dataApi.find({}).subscribe((data) => {
       this.data = data;
-      console.log("This is the data " + data); 
-      console.log(data); 
+    });
+  }
+
+  delete(id: any): void {
+    this.dataApi.deleteById(id).subscribe((data) => {
+      this.loadData();
     });
   }
 }
