@@ -3,10 +3,7 @@ import { ChampionshipService } from '../../championship.service';
 //import { Championship } from '../../championship';
 import { ChampionshipApi }            from '../../../../sdk/services';
 import { Championship }  from '../../../../sdk/models';
-
-export interface LoadListDataInterface {
-    loadData();
-}
+import {LoadListDataInterface} from '../../loadListDataInterface'
 
 @Component({
   selector: 'app-championship-list',

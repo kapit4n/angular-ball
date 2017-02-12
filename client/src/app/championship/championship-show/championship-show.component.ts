@@ -4,11 +4,7 @@ import { ChampionshipService } from '../../championship.service';
 import { ActivatedRoute } from '@angular/router';
 import { ChampionshipApi }            from '../../../../sdk/services';
 import { Championship }  from '../../../../sdk/models';
-
-export interface LoadDataInterface {
-    loadData(id: any);
-}
-
+import {LoadDataInterface} from '../../loadDataInterface'
 
 @Component({
   selector: 'app-championship-show',
