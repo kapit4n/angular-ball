@@ -1,12 +1,12 @@
-<a class="btn-floating btn-large red" [routerLink]="['/championship/edit', championship.id]">
+<a class="btn-floating btn-large red" [routerLink]="['/championship/edit', data.id]">
   <i class="large material-icons">mode_edit</i>
 </a>
 <div class="row">
   <div class="col s12 m7">
     <div class="card">
       <div class="card-image">
-        <img src="{{championship.src}}" style="width: 30%;">
-        <span class="card-title">{{championship.name}}</span>
+        <img src="{{data.logoUrl}}" style="width: 30%;">
+        <span class="card-title">{{data.name}}</span>
       </div>
       <div class="card-content">
         <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
@@ -17,7 +17,7 @@
     </div>
   </div>
 </div>
-<ul class="collection" *ngFor="let team of championship.teams">
+<ul class="collection" *ngFor="let team of data.teams">
   <li class="collection-item avatar">
     <img src="{{team.src}}" alt="" class="circle">
     <a [routerLink]="['/team/show', team.id]" ><span class="title">{{team.name}}</span></a>

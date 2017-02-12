@@ -1,42 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { ChampionshipService } from '../../championship.service';
-import { Championship } from '../../championship';
+//import { Championship } from '../../championship';
 import { ActivatedRoute } from '@angular/router';
+import { ChampionshipApi }            from '../../../../sdk/services';
+import { Championship }  from '../../../../sdk/models';
+
+export interface LoadDataInterface {
+    loadData(id: any);
+}
 
 
 @Component({
   selector: 'app-championship-show',
   templateUrl: './championship-show.component.html',
   styleUrls: ['./championship-show.component.css'],
-  providers: [ChampionshipService]
+  providers: [ChampionshipService, ChampionshipApi]
 })
 
-export class ChampionshipShowComponent implements OnInit {
-  championships = [];
-  championship: Championship;
+export class ChampionshipShowComponent implements OnInit, LoadDataInterface {
+  data: Championship;
   id: any;
   paramsSub: any;
 
-  constructor(private activatedRoute: ActivatedRoute, private championshipService: ChampionshipService) {
-    this.paramsSub = this.activatedRoute.params.subscribe(params => this.id = parseInt(params['id'], 10));
-    this.championship = {id: 1, name: 'UEFA Champions League', src: 'http://www.footballbootsdb.com/logos/leagues/2.png', teams: []};
+  constructor(private activatedRoute: ActivatedRoute, private championshipService: ChampionshipService, private dataApi : ChampionshipApi) {
+    this.data = {id: 0, name: "Default Name", logoUrl: "test.png", description: "Description"};
+    this.paramsSub = this.activatedRoute.params.subscribe(params => { 
+        this.id = parseInt(params['id'], 10);
+        this.loadData(this.id);
+      }
+    );
+  }
+
+  loadData(id: any): void {
+      this.dataApi.findById(id).subscribe((data: Championship) => {
+        this.data = data;
+        console.log(data);
+      });
   }
 
   ngOnInit() {
-    this.getChampionships();
-  }
-
-
-  getChampionships(): void {
-    this.championshipService.getChampionships().then(championships => {
-        this.championships = championships;
-        for(let i = 0; i < this.championships.length; i++) {
-          if (this.championships[i].id == this.id) {
-            this.championship = this.championships[i];
-          }
-        }
-      }
-      );
+    
   }
 
   ngOnDestroy() {

@@ -36,13 +36,22 @@ export class AppComponent {
     this.user.email = "admin@gmail.com";
     this.user.password = "admin";
     this.signin();
-    this.getTeam(2);
+    this.loadTeam(2);
   }
 
-  getTeam(id: any): void {
+  loadTeam(id: any): void {
       this.teamApi.findById(id).subscribe((team: Team) => {
         this.team = team;
-        console.log("This is the team " + team.name); 
+        console.log("This is the team " + team); 
+        console.log(team); 
+      });
+  }
+
+  loadTeams(): void {
+      this.teamApi.find({}).subscribe((teams: Team[]) => {
+        this.teams = teams;
+        console.log("This is the team " + teams); 
+        console.log(teams); 
       });
   }
 
