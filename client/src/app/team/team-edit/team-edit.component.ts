@@ -1,42 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { Team } from '../../team';
 import { FormsModule } from '@angular/forms';
-import { TeamService } from '../../team.service';
 import { ActivatedRoute } from '@angular/router';
+import { TeamApi }            from '../../../../sdk/services';
+import { Team }  from '../../../../sdk/models';
+import { LoadDataInterface } from '../../loadDataInterface'
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-team-edit',
   templateUrl: './team-edit.component.html',
   styleUrls: ['./team-edit.component.css']
 })
-export class TeamEditComponent implements OnInit {
+export class TeamEditComponent implements OnInit, LoadDataInterface {
 
-  team: Team;
+  data: Team;
   id: any;
   paramsSub: any;
-  teams = [];
-  constructor(private activatedRoute: ActivatedRoute, private teamService: TeamService) {
-    this.team = {id: 0, name: "RRR", src: "RRR", points: 0};
+  constructor(private activatedRoute: ActivatedRoute, private dataApi : TeamApi, private router: Router) {
+    this.data = {id: 0, name: "RRR", logoUrl: "RRR", description: "0"};
+    this.paramsSub = this.activatedRoute.params.subscribe(params => { 
+        this.id = parseInt(params['id'], 10);
+        this.loadData(this.id);
+      }
+    );
   }
 
-
   ngOnInit() {
-    this.paramsSub = this.activatedRoute.params.subscribe(params => this.id = parseInt(params['id'], 10));
-    this.getTeam();
   }
 
   ngOnDestroy() {
     this.paramsSub.unsubscribe();
   }
 
-  getTeam(): void {
-    this.teamService.getTeams().then(teams => {
-        this.teams = teams;
-        for(let i = 0; i < this.teams.length; i++) {
-          if (this.teams[i].id == this.id) {
-            this.team = this.teams[i];
-          }
-        }
-      } );
+  loadData(id: any): void {
+      this.dataApi.findById(id).subscribe((data: Team) => {
+        this.data = data;
+      });
+  }
+
+  save(): void  {
+    this.dataApi.upsert(this.data).subscribe((data: Team) => {
+      this.router.navigate(['team/show/' + data.id]);
+    });
   }
 }

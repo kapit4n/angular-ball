@@ -1,3 +1,20 @@
-<p>
-  team-edit works!
-</p>
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="col s6">
+                <label for="name">Team Name</label>
+                <input id="name" placeholder="Placeholder" [(ngModel)]="data.name" type="text" class="validate" name="name">
+            </div>
+            <div class="col s6">
+                <label for="logoUrl">Logo Url</label>
+                <input id="logoUrl" type="text" [(ngModel)]="data.logoUrl" class="validate" name="logoUrl">
+            </div>
+            <div class="col s6">
+                <label for="description">Team Description</label>
+                <input id="description" type="text" [(ngModel)]="data.description" class="validate" name="description">
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" (click)="save()" name="action">Save
+        </button>
+    </form>
+</div>

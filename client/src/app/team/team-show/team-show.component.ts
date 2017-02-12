@@ -37,6 +37,4 @@ export class TeamShowComponent implements OnInit, LoadDataInterface {
   ngOnDestroy() {
     this.paramsSub.unsubscribe();
   }
-
-
 }
