@@ -1,42 +1,47 @@
 import { Component, OnInit } from '@angular/core';
-import { ChampionshipService } from '../../championship.service';
-import { Championship } from '../../championship';
 import { ActivatedRoute } from '@angular/router';
+import { ChampionshipApi }            from '../../../../sdk/services';
+import { Championship }  from '../../../../sdk/models';
+import {Router} from '@angular/router';
+import { LoadDataInterface } from '../../loadDataInterface'
 
 @Component({
   selector: 'app-championship-edit',
   templateUrl: './championship-edit.component.html',
   styleUrls: ['./championship-edit.component.css']
 })
-export class ChampionshipEditComponent implements OnInit {
-  championships = [];
-  championship: Championship;
+export class ChampionshipEditComponent implements OnInit, LoadDataInterface {
+  data: Championship;
   id: any;
   paramsSub: any;
 
-  constructor(private activatedRoute: ActivatedRoute, private championshipService: ChampionshipService) {
-    this.paramsSub = this.activatedRoute.params.subscribe(params => this.id = parseInt(params['id'], 10));
-    this.championship = {id: 1, name: 'UEFA Champions League', src: 'http://www.footballbootsdb.com/logos/leagues/2.png', teams: []};
+  constructor(private activatedRoute: ActivatedRoute, private dataApi : ChampionshipApi, private router: Router) {
+    this.data = {id: 0, name: "", logoUrl: "", description: ""};
+    this.paramsSub = this.activatedRoute.params.subscribe(params => { 
+        this.id = parseInt(params['id'], 10);
+        this.loadData(this.id);
+      }
+    );
+
   }
 
   ngOnInit() {
-    this.getChampionships();
-  }
-
-
-  getChampionships(): void {
-    this.championshipService.getChampionships().then(championships => {
-        this.championships = championships;
-        for(let i = 0; i < this.championships.length; i++) {
-          if (this.championships[i].id == this.id) {
-            this.championship = this.championships[i];
-          }
-        }
-      }
-      );
   }
 
   ngOnDestroy() {
     this.paramsSub.unsubscribe();
   }
+
+  loadData(id: any): void {
+      this.dataApi.findById(id).subscribe((data: Championship) => {
+        this.data = data;
+      });
+  }
+
+  save(): void  {
+    this.dataApi.upsert(this.data).subscribe((data: Championship) => {
+      this.router.navigate(['championship/show/' + data.id]);
+    });
+  }
+
 }

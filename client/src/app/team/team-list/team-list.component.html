@@ -1,12 +1,14 @@
-<a class="btn-floating btn waves-effect waves-light red" routerLink="/team/add" routerLinkActive="active"><i class="material-icons">add</i></a>
-<ul class="collection">
-	<li class="collection-item avatar" *ngFor="let row of data">
-    <img src="{{row.logoUrl}}" alt="" class="circle">
-    <a [routerLink]="['/team/show', row.id]" ><span class="title">{{row.name}}</span></a>
-    <p>First Line
-      <br> Second Line
-    </p>
-    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-	</li>
-</ul>
-<a class="btn-floating btn waves-effect waves-light red" routerLink="/team/add" routerLinkActive="active"><i class="material-icons">add</i></a>
+<div style="min-height: 600px;">
+  <a class="btn-floating btn waves-effect waves-light red" routerLink="/team/add" routerLinkActive="active"><i class="material-icons">add</i></a>
+  <ul class="collection">
+    <li class="collection-item avatar" *ngFor="let row of data">
+      <img src="{{row.logoUrl}}" alt="" class="circle">
+      <a [routerLink]="['/team/show', row.id]" ><span class="title">{{row.name}}</span></a>
+      <p>
+        {{row.description}}
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+  </ul>
+  <a class="btn-floating btn waves-effect waves-light red" routerLink="/team/add" routerLinkActive="active"><i class="material-icons">add</i></a>
+</div>

@@ -1,8 +1,9 @@
 <div class="row">
+    <h1>Edit Team</h1>
     <form class="col s12">
         <div class="row">
             <div class="col s6">
-                <label for="name">Team Name</label>
+                <label for="name">Name</label>
                 <input id="name" placeholder="Placeholder" [(ngModel)]="data.name" type="text" class="validate" name="name">
             </div>
             <div class="col s6">
@@ -10,8 +11,8 @@
                 <input id="logoUrl" type="text" [(ngModel)]="data.logoUrl" class="validate" name="logoUrl">
             </div>
             <div class="col s6">
-                <label for="description">Team Description</label>
-                <input id="description" type="text" [(ngModel)]="data.description" class="validate" name="description">
+                <label for="description">Description</label>
+                <textarea id="description" type="text" [(ngModel)]="data.description" class="materialize-textarea" name="description"></textarea>
             </div>
         </div>
         <button class="btn waves-effect waves-light" type="submit" (click)="save()" name="action">Save

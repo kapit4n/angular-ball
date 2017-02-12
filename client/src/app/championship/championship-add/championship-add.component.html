@@ -1,3 +1,23 @@
-<p>
-  championship-add works!
-</p>
+<div style="min-height: 600px;">
+    <div class="row">
+        <h5>New Championship</h5>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Placeholder" [(ngModel)]="data.name" type="text" class="validate" name="name">
+                    <label for="first_name">Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input type="text" [(ngModel)]="data.logoUrl" class="validate" name="icon">
+                    <label for="last_name">Logo Url</label>
+                </div>
+                <div class="col s6">
+                    <label for="description">Description</label>
+                    <textarea id="description" type="text" [(ngModel)]="data.description" class="materialize-textarea" name="description"></textarea>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" (click)="save()" name="action">Save
+            </button>
+        </form>
+    </div>
+</div>

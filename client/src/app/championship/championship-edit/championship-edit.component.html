@@ -1,3 +1,23 @@
-<p>
-  championship-edit works!
-</p>
+<div style="min-height: 600px;">
+    <div class="row">
+        <h1>Edit Championship</h1>
+        <form class="col s12">
+            <div class="row">
+                <div class="col s6">
+                    <label for="name">Name</label>
+                    <input id="name" placeholder="Placeholder" [(ngModel)]="data.name" type="text" class="validate" name="name">
+                </div>
+                <div class="col s6">
+                    <label for="logoUrl">Logo Url</label>
+                    <input id="logoUrl" type="text" [(ngModel)]="data.logoUrl" class="validate" name="logoUrl">
+                </div>
+                <div class="col s6">
+                    <label for="description">Description</label>
+                    <textarea id="description" type="text" [(ngModel)]="data.description" class="materialize-textarea" name="description"></textarea>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" (click)="save()" name="action">Save
+            </button>
+        </form>
+    </div>
+</div>

@@ -10,17 +10,17 @@ import {Router} from '@angular/router';
   styleUrls: ['./team-add.component.css']
 })
 export class TeamAddComponent implements OnInit {
-  team: Team;
+  data: Team;
 
   constructor(private dataApi: TeamApi, private router: Router) {
-    this.team = {id: 0, name: "", logoUrl: "", description: ""};
+    this.data = {id: 0, name: "", logoUrl: "", description: ""};
   }
 
   ngOnInit() {
   }
 
   save(): void  {
-    this.dataApi.create(this.team).subscribe((data: Team) => {
+    this.dataApi.create(this.data).subscribe((data: Team) => {
       this.router.navigate(['team/']);
     });
   }
