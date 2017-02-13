@@ -4,11 +4,20 @@
     <li class="collection-header"><h4>CHAMPIONSHIP LIST</h4></li>
     <li class="collection-item avatar" *ngFor="let row of data">
       <img src="{{row.logoUrl}}" alt="" class="circle">
-      <a [routerLink]="['/championship/show', row.id]" ><span class="title">{{row.name}}</span></a>
+      <a [routerLink]="['/championship/show', row.id]" ><span class="title" style=" text-transform: uppercase;">{{row.name}}</span></a>
       <p>
         {{row.description}}
       </p>
       <a class="btn-floating btn waves-effect waves-light red" (click)="delete(row.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
+      <a class="btn-floating btn blue" [routerLink]="['/championship/edit', row.id]">
+        <i class="small material-icons">mode_edit</i>
+      </a>
+      <a class="btn-floating btn blue" [routerLink]="['/championship/show', row.id]">
+        <i class="material-icons">info</i>
+      </a>
+      <a class="btn-floating btn red" [routerLink]="['/championship/show', row.id]">
+        <i class="material-icons">thumb_up</i>
+      </a>
     </li>
   </ul>
   <a class="btn-floating btn waves-effect waves-light red" routerLink="/championship/add" routerLinkActive="active"><i class="material-icons">add</i></a>
