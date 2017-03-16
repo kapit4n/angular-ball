@@ -1,4 +1,4 @@
-<ul id="slide-out" class="side-nav fixed" style="width: 60px;">
+<md-sidenav-container [class.m2app-dark]="isDarkTheme">
   <md-sidenav #sidenav mode="side" class="app-sidenav">
     <md-list>
       <h3 md-subheader>Championships</h3>
@@ -10,8 +10,7 @@
       <a class="btn-floating btn waves-effect waves-light red" routerLink="/team/add" routerLinkActive="active"><i class="material-icons">add</i></a>
       <a routerLink="/team" routerLinkActive="active"><i class="material-icons">list</i></a>
     </md-list>
-  </md-sidenav> 
-  </ul>
+  </md-sidenav>
   <md-toolbar color="primary">
     <button class="app-icon-button" (click)="sidenav.toggle()">
       <i class="material-icons app-toolbar-menu">menu</i>
@@ -23,5 +22,5 @@
   <div class="app-content">
     <router-outlet></router-outlet>
   </div>
-<a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-          
+</md-sidenav-container>
+ 

@@ -1,5 +1,5 @@
 import { Component, Optional } from '@angular/core';
-import { MdDialog, MdSidenav, MdToolbar, MdList, MdDialogRef, MdSnackBar} from '@angular/material';
+import { MdDialog,MdSidenavContainer, MdSidenav, MdToolbar, MdList, MdDialogRef, MdSnackBar} from '@angular/material';
 import { TeamAddComponent } from './team/team-add/team-add.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
 import { LoopBackConfig } from '../../sdk/index';
