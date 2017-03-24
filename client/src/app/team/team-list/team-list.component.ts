@@ -20,7 +20,7 @@ export class TeamListComponent implements OnInit, LoadListDataInterface {
 
   loadData(): void {
     this.dataApi.find({}).subscribe((data) => {
-      this.data = data;
+      console.log(data);
     });
   }
 

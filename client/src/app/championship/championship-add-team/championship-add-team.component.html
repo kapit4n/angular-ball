@@ -1,0 +1,9 @@
+ <ul class="collection with-header">
+    <li class="collection-header"><h4>TEAM LIST</h4></li>
+    <li class="collection-item avatar" *ngFor="let row of data">
+      <img src="{{row.logoUrl}}" alt="" class="circle" style="width: 50px;">
+      <a [routerLink]="['/team/show', row.id]" ><span class="title" style=" text-transform: uppercase;">{{row.name}}</span></a>
+      <button type="button" md-raised-button (click)="dialogRef.close(row.id)">Add</button>
+    </li>
+  </ul>
+<button type="button" md-button (click)="dialogRef.close()">Cancel</button>

@@ -19,6 +19,7 @@ import { ChampionshipAddComponent } from './championship/championship-add/champi
 import { ChampionshipListComponent } from './championship/championship-list/championship-list.component';
 import { TeamComponent } from './team/team/team.component';
 import { ChampionshipComponent } from './championship/championship/championship.component';
+import { ChampionshipAddTeamComponent } from './championship/championship-add-team/championship-add-team.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent },
@@ -50,8 +51,13 @@ const appRoutes: Routes = [
     TeamEditComponent, TeamAddComponent,
     TeamShowComponent, TeamEditComponent,
     TeamAddComponent, TeamListComponent,
-    TeamShowComponent, PageNotFoundComponent, ChampionshipShowComponent, ChampionshipEditComponent, ChampionshipAddComponent, ChampionshipListComponent, TeamComponent, ChampionshipComponent
+    TeamShowComponent, PageNotFoundComponent,
+    ChampionshipShowComponent, ChampionshipEditComponent,
+    ChampionshipAddComponent, ChampionshipListComponent,
+    TeamComponent, ChampionshipComponent,
+    ChampionshipAddTeamComponent
   ],
+  entryComponents: [ChampionshipAddTeamComponent],
   imports: [
     BrowserModule,
     FormsModule,
