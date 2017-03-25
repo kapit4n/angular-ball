@@ -21,6 +21,11 @@
       "type": "belongsTo",
       "model": "championship",
       "foreignKey": "id"
+    },
+    "teams": {
+      "type": "hasMany",
+      "model": "team",
+      "foreignKey": ""
     }
   },
   "acls": [],

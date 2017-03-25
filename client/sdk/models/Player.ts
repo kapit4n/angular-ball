@@ -2,17 +2,17 @@
 
 declare var Object: any;
 export interface PlayerInterface {
-  name: string;
-  avatarUrl?: string;
-  biography?: string;
-  id?: number;
+  "name": any;
+  "avatarUrl"?: any;
+  "biography"?: any;
+  "id"?: any;
 }
 
 export class Player implements PlayerInterface {
-  name: string;
-  avatarUrl: string;
-  biography: string;
-  id: number;
+  "name": any;
+  "avatarUrl": any;
+  "biography": any;
+  "id": any;
   constructor(data?: PlayerInterface) {
     Object.assign(this, data);
   }
@@ -31,7 +31,7 @@ export class Player implements PlayerInterface {
   **/
   public static factory(data: PlayerInterface): Player{
     return new Player(data);
-  }  
+  }
   /**
   * @method getModelDefinition
   * @author Julien Ledun
@@ -44,21 +44,21 @@ export class Player implements PlayerInterface {
       name: 'Player',
       plural: 'Players',
       properties: {
-        name: {
+        "name": {
           name: 'name',
-          type: 'string'
+          type: 'any'
         },
-        avatarUrl: {
+        "avatarUrl": {
           name: 'avatarUrl',
-          type: 'string'
+          type: 'any'
         },
-        biography: {
+        "biography": {
           name: 'biography',
-          type: 'string'
+          type: 'any'
         },
-        id: {
+        "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {

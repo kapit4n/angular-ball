@@ -18,14 +18,14 @@
 * // App Root 
 * import { AppComponent }   from './app.component';
 * // Feature Modules
-* import { SDKModule }      from './shared/sdk/sdk.module';
+* import { SDK[Browser|Node|Native]Module } from './shared/sdk/sdk.module';
 * // Import Routing
 * import { routing }        from './app.routing';
 * @NgModule({
 *  imports: [
 *    BrowserModule,
 *    routing,
-*    SDKModule.forRoot()
+*    SDK[Browser|Node|Native]Module.forRoot()
 *  ],
 *  declarations: [ AppComponent ],
 *  bootstrap:    [ AppComponent ]
@@ -38,14 +38,15 @@ import { ErrorHandler } from './services/core/error.service';
 import { LoopBackAuth } from './services/core/auth.service';
 import { LoggerService } from './services/custom/logger.service';
 import { SDKModels } from './services/custom/SDKModels';
-import { InternalStorage } from './storage/internal.storage';
-import { SocketDriver } from './sockets/socket.driver';
-import { SocketConnections } from './sockets/socket.connections';
+import { InternalStorage, SDKStorage } from './storage/storage.swaps';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CookieBrowser } from './storage/cookie.browser';
+import { StorageBrowser } from './storage/storage.browser';
 import { SocketBrowser } from './sockets/socket.browser';
+import { SocketDriver } from './sockets/socket.driver';
+import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
 import { UserApi } from './services/custom/User';
 import { TeamApi } from './services/custom/Team';
@@ -70,11 +71,14 @@ import { TeamPlayerApi } from './services/custom/TeamPlayer';
   exports:      [ ],
   providers:    [
     ErrorHandler,
-    SocketConnections
+    SocketConnection
   ]
 })
 export class SDKBrowserModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(internalStorageProvider: any = {
+    provide: InternalStorage,
+    useClass: CookieBrowser
+  }): ModuleWithProviders {
     return {
       ngModule  : SDKBrowserModule,
       providers : [
@@ -91,7 +95,8 @@ export class SDKBrowserModule {
         TeamChampionshipRowApi,
         MatchApi,
         TeamPlayerApi,
-        { provide: InternalStorage, useClass: CookieBrowser },
+        internalStorageProvider,
+        { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }
       ]
     };
@@ -104,4 +109,6 @@ export class SDKBrowserModule {
 export * from './models/index';
 export * from './services/index';
 export * from './lb.config';
-
+export * from './storage/storage.swaps';
+export { CookieBrowser } from './storage/cookie.browser';
+export { StorageBrowser } from './storage/storage.browser';

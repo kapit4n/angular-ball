@@ -1,21 +1,24 @@
 /* tslint:disable */
 import {
-  Championship
+  Championship,
+  Team
 } from '../index';
 
 declare var Object: any;
 export interface ChampionshipRowInterface {
-  startDate: Date;
-  endDate: Date;
-  id?: number;
+  "startDate": any;
+  "endDate": any;
+  "id"?: any;
   championship?: Championship;
+  teams?: Team[];
 }
 
 export class ChampionshipRow implements ChampionshipRowInterface {
-  startDate: Date;
-  endDate: Date;
-  id: number;
+  "startDate": any;
+  "endDate": any;
+  "id": any;
   championship: Championship;
+  teams: Team[];
   constructor(data?: ChampionshipRowInterface) {
     Object.assign(this, data);
   }
@@ -34,7 +37,7 @@ export class ChampionshipRow implements ChampionshipRowInterface {
   **/
   public static factory(data: ChampionshipRowInterface): ChampionshipRow{
     return new ChampionshipRow(data);
-  }  
+  }
   /**
   * @method getModelDefinition
   * @author Julien Ledun
@@ -47,17 +50,17 @@ export class ChampionshipRow implements ChampionshipRowInterface {
       name: 'ChampionshipRow',
       plural: 'ChampionshipRows',
       properties: {
-        startDate: {
+        "startDate": {
           name: 'startDate',
-          type: 'Date'
+          type: 'any'
         },
-        endDate: {
+        "endDate": {
           name: 'endDate',
-          type: 'Date'
+          type: 'any'
         },
-        id: {
+        "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {
@@ -65,6 +68,11 @@ export class ChampionshipRow implements ChampionshipRowInterface {
           name: 'championship',
           type: 'Championship',
           model: 'Championship'
+        },
+        teams: {
+          name: 'teams',
+          type: 'Team[]',
+          model: 'Team'
         },
       }
     }

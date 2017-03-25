@@ -11,14 +11,14 @@ import { LoadDataInterface } from '../../loadDataInterface'
   styleUrls: ['./championship-edit.component.css']
 })
 export class ChampionshipEditComponent implements OnInit, LoadDataInterface {
-  data: Championship;
+  data: any;
   id: any;
   paramsSub: any;
 
   constructor(private activatedRoute: ActivatedRoute, private dataApi : ChampionshipApi, private router: Router) {
-    this.data = {id: 0, name: "", logoUrl: "", description: ""};
+    this.data = {name: "", logoUrl: "", description: ""};
     this.paramsSub = this.activatedRoute.params.subscribe(params => { 
-        this.id = parseInt(params['id'], 10);
+        this.id = params['id'];
         this.loadData(this.id);
       }
     );

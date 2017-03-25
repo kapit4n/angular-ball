@@ -6,17 +6,17 @@ import {
 
 declare var Object: any;
 export interface TeamChampionshipRowInterface {
-  subDate: Date;
-  points: number;
-  id?: number;
+  "subDate": any;
+  "points": any;
+  "id"?: any;
   championshipRow?: ChampionshipRow;
   team?: Team;
 }
 
 export class TeamChampionshipRow implements TeamChampionshipRowInterface {
-  subDate: Date;
-  points: number;
-  id: number;
+  "subDate": any;
+  "points": any;
+  "id": any;
   championshipRow: ChampionshipRow;
   team: Team;
   constructor(data?: TeamChampionshipRowInterface) {
@@ -37,7 +37,7 @@ export class TeamChampionshipRow implements TeamChampionshipRowInterface {
   **/
   public static factory(data: TeamChampionshipRowInterface): TeamChampionshipRow{
     return new TeamChampionshipRow(data);
-  }  
+  }
   /**
   * @method getModelDefinition
   * @author Julien Ledun
@@ -50,18 +50,18 @@ export class TeamChampionshipRow implements TeamChampionshipRowInterface {
       name: 'TeamChampionshipRow',
       plural: 'TeamChampionshipRows',
       properties: {
-        subDate: {
+        "subDate": {
           name: 'subDate',
-          type: 'Date'
+          type: 'any'
         },
-        points: {
+        "points": {
           name: 'points',
-          type: 'number',
+          type: 'any',
           default: 0
         },
-        id: {
+        "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {

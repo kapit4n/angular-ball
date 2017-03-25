@@ -2,17 +2,17 @@
 
 declare var Object: any;
 export interface ChampionshipInterface {
-  name: string;
-  logoUrl?: string;
-  description?: string;
-  id?: number;
+  "name": any;
+  "logoUrl"?: any;
+  "description"?: any;
+  "id"?: any;
 }
 
 export class Championship implements ChampionshipInterface {
-  name: string;
-  logoUrl: string;
-  description: string;
-  id: number;
+  "name": any;
+  "logoUrl": any;
+  "description": any;
+  "id": any;
   constructor(data?: ChampionshipInterface) {
     Object.assign(this, data);
   }
@@ -31,7 +31,7 @@ export class Championship implements ChampionshipInterface {
   **/
   public static factory(data: ChampionshipInterface): Championship{
     return new Championship(data);
-  }  
+  }
   /**
   * @method getModelDefinition
   * @author Julien Ledun
@@ -44,21 +44,21 @@ export class Championship implements ChampionshipInterface {
       name: 'Championship',
       plural: 'Championships',
       properties: {
-        name: {
+        "name": {
           name: 'name',
-          type: 'string'
+          type: 'any'
         },
-        logoUrl: {
+        "logoUrl": {
           name: 'logoUrl',
-          type: 'string'
+          type: 'any'
         },
-        description: {
+        "description": {
           name: 'description',
-          type: 'string'
+          type: 'any'
         },
-        id: {
+        "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {

@@ -10,10 +10,10 @@ import {Router} from '@angular/router';
   providers: [ChampionshipApi]
 })
 export class ChampionshipAddComponent implements OnInit {
-  data: Championship;
+  data: any;
 
   constructor(private router: Router, private dataApi : ChampionshipApi) {
-    this.data = {id: 0, name: "", logoUrl: "", description: ""};
+    this.data = {name: "", logoUrl: "", description: ""};
   }
 
   ngOnInit() {

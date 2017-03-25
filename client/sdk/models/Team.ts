@@ -2,17 +2,19 @@
 
 declare var Object: any;
 export interface TeamInterface {
-  name: string;
-  logoUrl?: string;
-  description: string;
-  id?: number;
+  "name": any;
+  "logoUrl"?: any;
+  "description": any;
+  "id"?: any;
+  "championshipRowId"?: any;
 }
 
 export class Team implements TeamInterface {
-  name: string;
-  logoUrl: string;
-  description: string;
-  id: number;
+  "name": any;
+  "logoUrl": any;
+  "description": any;
+  "id": any;
+  "championshipRowId": any;
   constructor(data?: TeamInterface) {
     Object.assign(this, data);
   }
@@ -31,7 +33,7 @@ export class Team implements TeamInterface {
   **/
   public static factory(data: TeamInterface): Team{
     return new Team(data);
-  }  
+  }
   /**
   * @method getModelDefinition
   * @author Julien Ledun
@@ -44,21 +46,25 @@ export class Team implements TeamInterface {
       name: 'Team',
       plural: 'Teams',
       properties: {
-        name: {
+        "name": {
           name: 'name',
-          type: 'string'
+          type: 'any'
         },
-        logoUrl: {
+        "logoUrl": {
           name: 'logoUrl',
-          type: 'string'
+          type: 'any'
         },
-        description: {
+        "description": {
           name: 'description',
-          type: 'string'
+          type: 'any'
         },
-        id: {
+        "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
+        },
+        "championshipRowId": {
+          name: 'championshipRowId',
+          type: 'any'
         },
       },
       relations: {

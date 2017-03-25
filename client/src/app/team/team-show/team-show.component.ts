@@ -12,14 +12,14 @@ import { LoadDataInterface } from '../../loadDataInterface'
   providers: [TeamApi]
 })
 export class TeamShowComponent implements OnInit, LoadDataInterface {
-  data: Team;
+  data: any;
   id: any;
   paramsSub: any;
   teams = [];
   constructor(private activatedRoute: ActivatedRoute, private dataApi : TeamApi) {
-    this.data = {id: 0, name: "RRR", logoUrl: "RRR", description: "Des"};
+    this.data = { name: "RRR", logoUrl: "RRR", description: "Des"};
     this.paramsSub = this.activatedRoute.params.subscribe(params => { 
-        this.id = parseInt(params['id'], 10);
+        this.id = params['id'];
         this.loadData(this.id);
       }
     );

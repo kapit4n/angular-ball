@@ -2,33 +2,33 @@
 
 declare var Object: any;
 export interface UserInterface {
-  realm?: string;
-  username?: string;
-  password: string;
-  challenges?: any;
-  email: string;
-  emailVerified?: boolean;
-  verificationToken?: string;
-  status?: string;
-  created?: Date;
-  lastUpdated?: Date;
-  id?: number;
-  accessTokens?: Array<any>;
+  "realm"?: any;
+  "username"?: any;
+  "password": any;
+  "challenges"?: any;
+  "email": any;
+  "emailVerified"?: any;
+  "verificationToken"?: any;
+  "status"?: any;
+  "created"?: any;
+  "lastUpdated"?: any;
+  "id"?: any;
+  accessTokens?: any[];
 }
 
 export class User implements UserInterface {
-  realm: string;
-  username: string;
-  password: string;
-  challenges: any;
-  email: string;
-  emailVerified: boolean;
-  verificationToken: string;
-  status: string;
-  created: Date;
-  lastUpdated: Date;
-  id: number;
-  accessTokens: Array<any>;
+  "realm": any;
+  "username": any;
+  "password": any;
+  "challenges": any;
+  "email": any;
+  "emailVerified": any;
+  "verificationToken": any;
+  "status": any;
+  "created": any;
+  "lastUpdated": any;
+  "id": any;
+  accessTokens: any[];
   constructor(data?: UserInterface) {
     Object.assign(this, data);
   }
@@ -47,7 +47,7 @@ export class User implements UserInterface {
   **/
   public static factory(data: UserInterface): User{
     return new User(data);
-  }  
+  }
   /**
   * @method getModelDefinition
   * @author Julien Ledun
@@ -60,59 +60,59 @@ export class User implements UserInterface {
       name: 'User',
       plural: 'Users',
       properties: {
-        realm: {
+        "realm": {
           name: 'realm',
-          type: 'string'
+          type: 'any'
         },
-        username: {
+        "username": {
           name: 'username',
-          type: 'string'
+          type: 'any'
         },
-        password: {
+        "password": {
           name: 'password',
-          type: 'string'
+          type: 'any'
         },
-        credentials: {
+        "credentials": {
           name: 'credentials',
           type: 'any'
         },
-        challenges: {
+        "challenges": {
           name: 'challenges',
           type: 'any'
         },
-        email: {
+        "email": {
           name: 'email',
-          type: 'string'
+          type: 'any'
         },
-        emailVerified: {
+        "emailVerified": {
           name: 'emailVerified',
-          type: 'boolean'
+          type: 'any'
         },
-        verificationToken: {
+        "verificationToken": {
           name: 'verificationToken',
-          type: 'string'
+          type: 'any'
         },
-        status: {
+        "status": {
           name: 'status',
-          type: 'string'
+          type: 'any'
         },
-        created: {
+        "created": {
           name: 'created',
-          type: 'Date'
+          type: 'any'
         },
-        lastUpdated: {
+        "lastUpdated": {
           name: 'lastUpdated',
-          type: 'Date'
+          type: 'any'
         },
-        id: {
+        "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {
         accessTokens: {
           name: 'accessTokens',
-          type: 'Array<any>',
+          type: 'any[]',
           model: ''
         },
       }

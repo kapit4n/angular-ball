@@ -10,10 +10,10 @@ import {Router} from '@angular/router';
   styleUrls: ['./team-add.component.css']
 })
 export class TeamAddComponent implements OnInit {
-  data: Team;
+  data: any;
 
   constructor(private dataApi: TeamApi, private router: Router) {
-    this.data = {id: 0, name: "", logoUrl: "", description: ""};
+    this.data = {name: "", logoUrl: "", description: ""};
   }
 
   ngOnInit() {

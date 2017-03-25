@@ -6,17 +6,17 @@ import {
 
 declare var Object: any;
 export interface TeamPlayerInterface {
-  startDate: Date;
-  endDate: Date;
-  id?: number;
+  "startDate": any;
+  "endDate": any;
+  "id"?: any;
   team?: Team;
   player?: Player;
 }
 
 export class TeamPlayer implements TeamPlayerInterface {
-  startDate: Date;
-  endDate: Date;
-  id: number;
+  "startDate": any;
+  "endDate": any;
+  "id": any;
   team: Team;
   player: Player;
   constructor(data?: TeamPlayerInterface) {
@@ -37,7 +37,7 @@ export class TeamPlayer implements TeamPlayerInterface {
   **/
   public static factory(data: TeamPlayerInterface): TeamPlayer{
     return new TeamPlayer(data);
-  }  
+  }
   /**
   * @method getModelDefinition
   * @author Julien Ledun
@@ -50,17 +50,17 @@ export class TeamPlayer implements TeamPlayerInterface {
       name: 'TeamPlayer',
       plural: 'TeamPlayers',
       properties: {
-        startDate: {
+        "startDate": {
           name: 'startDate',
-          type: 'Date'
+          type: 'any'
         },
-        endDate: {
+        "endDate": {
           name: 'endDate',
-          type: 'Date'
+          type: 'any'
         },
-        id: {
+        "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {

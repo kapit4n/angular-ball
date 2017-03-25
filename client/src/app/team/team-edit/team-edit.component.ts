@@ -13,11 +13,11 @@ import {Router} from '@angular/router';
 })
 export class TeamEditComponent implements OnInit, LoadDataInterface {
 
-  data: Team;
+  data: any;
   id: any;
   paramsSub: any;
   constructor(private activatedRoute: ActivatedRoute, private dataApi : TeamApi, private router: Router) {
-    this.data = {id: 0, name: "RRR", logoUrl: "RRR", description: "0"};
+    this.data = {name: "RRR", logoUrl: "RRR", description: "0"};
     this.paramsSub = this.activatedRoute.params.subscribe(params => { 
         this.id = parseInt(params['id'], 10);
         this.loadData(this.id);

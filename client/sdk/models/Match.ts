@@ -5,21 +5,21 @@ import {
 
 declare var Object: any;
 export interface MatchInterface {
-  matchDate: Date;
-  teamAGoals?: number;
-  teamBGoals?: number;
-  winnerTeam?: string;
-  id?: number;
+  "matchDate": any;
+  "teamAGoals"?: any;
+  "teamBGoals"?: any;
+  "winnerTeam"?: any;
+  "id"?: any;
   teamA?: Team;
   teamB?: Team;
 }
 
 export class Match implements MatchInterface {
-  matchDate: Date;
-  teamAGoals: number;
-  teamBGoals: number;
-  winnerTeam: string;
-  id: number;
+  "matchDate": any;
+  "teamAGoals": any;
+  "teamBGoals": any;
+  "winnerTeam": any;
+  "id": any;
   teamA: Team;
   teamB: Team;
   constructor(data?: MatchInterface) {
@@ -40,7 +40,7 @@ export class Match implements MatchInterface {
   **/
   public static factory(data: MatchInterface): Match{
     return new Match(data);
-  }  
+  }
   /**
   * @method getModelDefinition
   * @author Julien Ledun
@@ -53,25 +53,25 @@ export class Match implements MatchInterface {
       name: 'Match',
       plural: 'Matches',
       properties: {
-        matchDate: {
+        "matchDate": {
           name: 'matchDate',
-          type: 'Date'
+          type: 'any'
         },
-        teamAGoals: {
+        "teamAGoals": {
           name: 'teamAGoals',
-          type: 'number'
+          type: 'any'
         },
-        teamBGoals: {
+        "teamBGoals": {
           name: 'teamBGoals',
-          type: 'number'
+          type: 'any'
         },
-        winnerTeam: {
+        "winnerTeam": {
           name: 'winnerTeam',
-          type: 'string'
+          type: 'any'
         },
-        id: {
+        "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {
