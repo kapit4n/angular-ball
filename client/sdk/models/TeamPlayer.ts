@@ -1,24 +1,20 @@
 /* tslint:disable */
-import {
-  Team,
-  Player
-} from '../index';
 
 declare var Object: any;
 export interface TeamPlayerInterface {
   "startDate": any;
   "endDate": any;
+  "team": any;
+  "player": any;
   "id"?: any;
-  team?: Team;
-  player?: Player;
 }
 
 export class TeamPlayer implements TeamPlayerInterface {
   "startDate": any;
   "endDate": any;
+  "team": any;
+  "player": any;
   "id": any;
-  team: Team;
-  player: Player;
   constructor(data?: TeamPlayerInterface) {
     Object.assign(this, data);
   }
@@ -58,22 +54,20 @@ export class TeamPlayer implements TeamPlayerInterface {
           name: 'endDate',
           type: 'any'
         },
+        "team": {
+          name: 'team',
+          type: 'any'
+        },
+        "player": {
+          name: 'player',
+          type: 'any'
+        },
         "id": {
           name: 'id',
           type: 'any'
         },
       },
       relations: {
-        team: {
-          name: 'team',
-          type: 'Team',
-          model: 'Team'
-        },
-        player: {
-          name: 'player',
-          type: 'Player',
-          model: 'Player'
-        },
       }
     }
   }

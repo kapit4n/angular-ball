@@ -13,21 +13,17 @@
     "endDate": {
       "type": "date",
       "required": true
+    },
+    "team": {
+      "type": "string",
+      "required": true
+    },
+    "player": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],
-  "relations": {
-    "team": {
-      "type": "belongsTo",
-      "model": "team",
-      "foreignKey": "id"
-    },
-    "player": {
-      "type": "belongsTo",
-      "model": "player",
-      "foreignKey": "id"
-    }
-  },
   "acls": [],
   "methods": {}
 }

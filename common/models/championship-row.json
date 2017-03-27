@@ -11,23 +11,15 @@
       "required": true
     },
     "endDate": {
-      "type": "date",
+      "type": "date"
+    },
+    "championship": {
+      "type": "string",
       "required": true
     }
+
   },
   "validations": [],
-  "relations": {
-    "championship": {
-      "type": "belongsTo",
-      "model": "championship",
-      "foreignKey": "id"
-    },
-    "teams": {
-      "type": "hasMany",
-      "model": "team",
-      "foreignKey": ""
-    }
-  },
   "acls": [],
   "methods": {}
 }

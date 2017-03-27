@@ -1,24 +1,18 @@
 /* tslint:disable */
-import {
-  Championship,
-  Team
-} from '../index';
 
 declare var Object: any;
 export interface ChampionshipRowInterface {
   "startDate": any;
-  "endDate": any;
+  "endDate"?: any;
+  "championship": any;
   "id"?: any;
-  championship?: Championship;
-  teams?: Team[];
 }
 
 export class ChampionshipRow implements ChampionshipRowInterface {
   "startDate": any;
   "endDate": any;
+  "championship": any;
   "id": any;
-  championship: Championship;
-  teams: Team[];
   constructor(data?: ChampionshipRowInterface) {
     Object.assign(this, data);
   }
@@ -58,22 +52,16 @@ export class ChampionshipRow implements ChampionshipRowInterface {
           name: 'endDate',
           type: 'any'
         },
+        "championship": {
+          name: 'championship',
+          type: 'any'
+        },
         "id": {
           name: 'id',
           type: 'any'
         },
       },
       relations: {
-        championship: {
-          name: 'championship',
-          type: 'Championship',
-          model: 'Championship'
-        },
-        teams: {
-          name: 'teams',
-          type: 'Team[]',
-          model: 'Team'
-        },
       }
     }
   }

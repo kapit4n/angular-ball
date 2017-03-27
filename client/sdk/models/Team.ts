@@ -6,7 +6,6 @@ export interface TeamInterface {
   "logoUrl"?: any;
   "description": any;
   "id"?: any;
-  "championshipRowId"?: any;
 }
 
 export class Team implements TeamInterface {
@@ -14,7 +13,6 @@ export class Team implements TeamInterface {
   "logoUrl": any;
   "description": any;
   "id": any;
-  "championshipRowId": any;
   constructor(data?: TeamInterface) {
     Object.assign(this, data);
   }
@@ -60,10 +58,6 @@ export class Team implements TeamInterface {
         },
         "id": {
           name: 'id',
-          type: 'any'
-        },
-        "championshipRowId": {
-          name: 'championshipRowId',
           type: 'any'
         },
       },
