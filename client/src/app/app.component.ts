@@ -24,7 +24,7 @@ export class AppComponent {
     LoopBackConfig.setApiVersion('api');
     this.user = new User();
     this.user.email = "admin@gmail.com";
-    this.user.password = "admin";
+    this.user.password = "adminqq01";
     this.signin();
   }
 

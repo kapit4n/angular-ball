@@ -37,11 +37,10 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
     var self = this;
     let dialogRef:MdDialogRef<ChampionshipAddTeamComponent> = this.dialog.open(ChampionshipAddTeamComponent, {height: '400px', width: '700px'});
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if (result) {
-        let data = {"team": result, "championshipRow": {"id": self.current.id}, "subDate": new Date()};
+        let data = {"championshipRowId": self.current.id, "teamId": result, "subDate": new Date()};
         self.childrenApi.create(data).subscribe((www: any) => {
-          console.log(www);
+          self.loadData(self.id);
         });
       }
     });
@@ -51,12 +50,20 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
     this.dataApi.findById(id).subscribe((data: Championship) => {
       this.data = data;
       var self = this;
-      this.currentRowApi.find({include: {relation: 'championship', scope: { where: { id: id }}} }).subscribe((rows: ChampionshipRow[]) => {
-        if(rows.length > 0) {
+      this.currentRowApi.find({
+                                where: { championship: self.data.id }
+                              }).subscribe((rows: any[]) => {
+        console.log("rows");
+        console.log(rows);
+        if(rows.length == 0) {
+          self.currentRowApi.create({championship: self.data.id, startDate: new Date(), endDate: new Date()}).subscribe((row: any) => {
+            console.log(row);
+          });
+        } else {
           console.log("This is current");
           console.log(rows);
           self.current = rows[0];
-          self.childrenApi.find({include: [{relation: 'championshipRow'}, {relation: 'team'}]}).subscribe((teams: TeamChampionshipRow[]) => {
+          self.childrenApi.find({where: { championship: self.current.id }}).subscribe((teams: TeamChampionshipRow[]) => {
             self.children = [];
             console.log(teams);
             teams.forEach(function(row) {

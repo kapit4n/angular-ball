@@ -21,8 +21,8 @@
   <ul class="collection with-header">
     <li class="collection-header"><h4>TEAM LIST</h4></li>
     <li class="collection-item avatar" *ngFor="let rowTeams of children">
-      <img src="{{rowTeams.team.logoUrl}}" alt="" class="circle">
-      <a [routerLink]="['/team/show', rowTeams.team.id]" ><span class="title" style=" text-transform: uppercase;">{{rowTeams.team.name}}</span></a>
+      <img src="{{rowTeams.id}}" alt="" class="circle">
+      <a [routerLink]="['/team/show', rowTeams.team.id]" ><span class="title" style=" text-transform: uppercase;">{{rowTeams.id}}</span></a>
       <a class="btn-floating btn waves-effect waves-light red" (click)="removeChildren(rowTeams.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
     </li>
   </ul>
