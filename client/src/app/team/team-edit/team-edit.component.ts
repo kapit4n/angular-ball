@@ -19,7 +19,7 @@ export class TeamEditComponent implements OnInit, LoadDataInterface {
   constructor(private activatedRoute: ActivatedRoute, private dataApi : TeamApi, private router: Router) {
     this.data = {name: "RRR", logoUrl: "RRR", description: "0"};
     this.paramsSub = this.activatedRoute.params.subscribe(params => { 
-        this.id = parseInt(params['id'], 10);
+        this.id = params['id'];
         this.loadData(this.id);
       }
     );
