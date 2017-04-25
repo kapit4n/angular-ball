@@ -50,12 +50,9 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
     this.dataApi.findById(id).subscribe((data: Championship) => {
       this.data = data;
       var self = this;
-      this.currentRowApi.find({
-                                where: { championship: self.data.id }
-                              }).subscribe((rows: any[]) => {
-        console.log("rows");
+      this.currentRowApi.findOne({ where: {championship: self.data.id}}).subscribe(rows => {
         console.log(rows);
-        if(rows.length == 0) {
+        if(rows != undefined) {
           self.currentRowApi.create({championship: self.data.id, startDate: new Date(), endDate: new Date()}).subscribe((row: any) => {
             console.log(row);
           });
