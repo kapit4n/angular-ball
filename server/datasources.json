@@ -7,10 +7,10 @@
     "host": "localhost",
     "port": 27017,
     "url": "",
-    "database": "angular-ball",
+    "database": "angularball",
     "password": "password",
     "name": "db",
-    "user": "accountUser",
+    "user": "angularUser",
     "connector": "mongodb"
   }
 }
