@@ -1,18 +1,29 @@
 /* tslint:disable */
+import {
+  TeamChampionshipRow,
+  Match,
+  TeamPlayer
+} from '../index';
 
 declare var Object: any;
 export interface TeamInterface {
-  "name": any;
-  "logoUrl"?: any;
-  "description": any;
+  "name": string;
+  "logoUrl"?: string;
+  "description": string;
   "id"?: any;
+  teamChampionshipRows?: TeamChampionshipRow[];
+  matches?: Match[];
+  teamPlayers?: TeamPlayer[];
 }
 
 export class Team implements TeamInterface {
-  "name": any;
-  "logoUrl": any;
-  "description": any;
+  "name": string;
+  "logoUrl": string;
+  "description": string;
   "id": any;
+  teamChampionshipRows: TeamChampionshipRow[];
+  matches: Match[];
+  teamPlayers: TeamPlayer[];
   constructor(data?: TeamInterface) {
     Object.assign(this, data);
   }
@@ -46,15 +57,15 @@ export class Team implements TeamInterface {
       properties: {
         "name": {
           name: 'name',
-          type: 'any'
+          type: 'string'
         },
         "logoUrl": {
           name: 'logoUrl',
-          type: 'any'
+          type: 'string'
         },
         "description": {
           name: 'description',
-          type: 'any'
+          type: 'string'
         },
         "id": {
           name: 'id',
@@ -62,6 +73,21 @@ export class Team implements TeamInterface {
         },
       },
       relations: {
+        teamChampionshipRows: {
+          name: 'teamChampionshipRows',
+          type: 'TeamChampionshipRow[]',
+          model: 'TeamChampionshipRow'
+        },
+        matches: {
+          name: 'matches',
+          type: 'Match[]',
+          model: 'Match'
+        },
+        teamPlayers: {
+          name: 'teamPlayers',
+          type: 'TeamPlayer[]',
+          model: 'TeamPlayer'
+        },
       }
     }
   }

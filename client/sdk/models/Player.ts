@@ -2,16 +2,16 @@
 
 declare var Object: any;
 export interface PlayerInterface {
-  "name": any;
-  "avatarUrl"?: any;
-  "biography"?: any;
+  "name": string;
+  "avatarUrl"?: string;
+  "biography"?: string;
   "id"?: any;
 }
 
 export class Player implements PlayerInterface {
-  "name": any;
-  "avatarUrl": any;
-  "biography": any;
+  "name": string;
+  "avatarUrl": string;
+  "biography": string;
   "id": any;
   constructor(data?: PlayerInterface) {
     Object.assign(this, data);
@@ -46,15 +46,15 @@ export class Player implements PlayerInterface {
       properties: {
         "name": {
           name: 'name',
-          type: 'any'
+          type: 'string'
         },
         "avatarUrl": {
           name: 'avatarUrl',
-          type: 'any'
+          type: 'string'
         },
         "biography": {
           name: 'biography',
-          type: 'any'
+          type: 'string'
         },
         "id": {
           name: 'id',

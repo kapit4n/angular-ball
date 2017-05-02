@@ -5,21 +5,23 @@ import {
 
 declare var Object: any;
 export interface MatchInterface {
-  "matchDate": any;
-  "teamAGoals"?: any;
-  "teamBGoals"?: any;
-  "winnerTeam"?: any;
+  "matchDate": Date;
+  "teamAGoals"?: number;
+  "teamBGoals"?: number;
+  "winnerTeam"?: string;
   "id"?: any;
+  "teamId"?: any;
   teamA?: Team;
   teamB?: Team;
 }
 
 export class Match implements MatchInterface {
-  "matchDate": any;
-  "teamAGoals": any;
-  "teamBGoals": any;
-  "winnerTeam": any;
+  "matchDate": Date;
+  "teamAGoals": number;
+  "teamBGoals": number;
+  "winnerTeam": string;
   "id": any;
+  "teamId": any;
   teamA: Team;
   teamB: Team;
   constructor(data?: MatchInterface) {
@@ -55,22 +57,26 @@ export class Match implements MatchInterface {
       properties: {
         "matchDate": {
           name: 'matchDate',
-          type: 'any'
+          type: 'Date'
         },
         "teamAGoals": {
           name: 'teamAGoals',
-          type: 'any'
+          type: 'number'
         },
         "teamBGoals": {
           name: 'teamBGoals',
-          type: 'any'
+          type: 'number'
         },
         "winnerTeam": {
           name: 'winnerTeam',
-          type: 'any'
+          type: 'string'
         },
         "id": {
           name: 'id',
+          type: 'any'
+        },
+        "teamId": {
+          name: 'teamId',
           type: 'any'
         },
       },

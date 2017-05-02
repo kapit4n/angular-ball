@@ -2,31 +2,31 @@
 
 declare var Object: any;
 export interface UserInterface {
-  "realm"?: any;
-  "username"?: any;
-  "password": any;
+  "realm"?: string;
+  "username"?: string;
+  "password": string;
   "challenges"?: any;
-  "email": any;
-  "emailVerified"?: any;
-  "verificationToken"?: any;
-  "status"?: any;
-  "created"?: any;
-  "lastUpdated"?: any;
+  "email": string;
+  "emailVerified"?: boolean;
+  "verificationToken"?: string;
+  "status"?: string;
+  "created"?: Date;
+  "lastUpdated"?: Date;
   "id"?: any;
   accessTokens?: any[];
 }
 
 export class User implements UserInterface {
-  "realm": any;
-  "username": any;
-  "password": any;
+  "realm": string;
+  "username": string;
+  "password": string;
   "challenges": any;
-  "email": any;
-  "emailVerified": any;
-  "verificationToken": any;
-  "status": any;
-  "created": any;
-  "lastUpdated": any;
+  "email": string;
+  "emailVerified": boolean;
+  "verificationToken": string;
+  "status": string;
+  "created": Date;
+  "lastUpdated": Date;
   "id": any;
   accessTokens: any[];
   constructor(data?: UserInterface) {
@@ -62,15 +62,15 @@ export class User implements UserInterface {
       properties: {
         "realm": {
           name: 'realm',
-          type: 'any'
+          type: 'string'
         },
         "username": {
           name: 'username',
-          type: 'any'
+          type: 'string'
         },
         "password": {
           name: 'password',
-          type: 'any'
+          type: 'string'
         },
         "credentials": {
           name: 'credentials',
@@ -82,27 +82,27 @@ export class User implements UserInterface {
         },
         "email": {
           name: 'email',
-          type: 'any'
+          type: 'string'
         },
         "emailVerified": {
           name: 'emailVerified',
-          type: 'any'
+          type: 'boolean'
         },
         "verificationToken": {
           name: 'verificationToken',
-          type: 'any'
+          type: 'string'
         },
         "status": {
           name: 'status',
-          type: 'any'
+          type: 'string'
         },
         "created": {
           name: 'created',
-          type: 'any'
+          type: 'Date'
         },
         "lastUpdated": {
           name: 'lastUpdated',
-          type: 'any'
+          type: 'Date'
         },
         "id": {
           name: 'id',

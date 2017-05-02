@@ -1,18 +1,23 @@
 /* tslint:disable */
+import {
+  ChampionshipRow
+} from '../index';
 
 declare var Object: any;
 export interface ChampionshipInterface {
-  "name": any;
-  "logoUrl"?: any;
-  "description"?: any;
+  "name": string;
+  "logoUrl"?: string;
+  "description"?: string;
   "id"?: any;
+  championshipRows?: ChampionshipRow[];
 }
 
 export class Championship implements ChampionshipInterface {
-  "name": any;
-  "logoUrl": any;
-  "description": any;
+  "name": string;
+  "logoUrl": string;
+  "description": string;
   "id": any;
+  championshipRows: ChampionshipRow[];
   constructor(data?: ChampionshipInterface) {
     Object.assign(this, data);
   }
@@ -46,15 +51,15 @@ export class Championship implements ChampionshipInterface {
       properties: {
         "name": {
           name: 'name',
-          type: 'any'
+          type: 'string'
         },
         "logoUrl": {
           name: 'logoUrl',
-          type: 'any'
+          type: 'string'
         },
         "description": {
           name: 'description',
-          type: 'any'
+          type: 'string'
         },
         "id": {
           name: 'id',
@@ -62,6 +67,11 @@ export class Championship implements ChampionshipInterface {
         },
       },
       relations: {
+        championshipRows: {
+          name: 'championshipRows',
+          type: 'ChampionshipRow[]',
+          model: 'ChampionshipRow'
+        },
       }
     }
   }

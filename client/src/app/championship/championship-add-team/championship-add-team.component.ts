@@ -20,6 +20,7 @@ export class ChampionshipAddTeamComponent implements OnInit, LoadListDataInterfa
 
   loadData(): void {
     this.dataApi.find({}).subscribe((data) => {
+      console.log(data);
       this.data = data;
     });
   }

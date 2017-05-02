@@ -2,19 +2,21 @@
 
 declare var Object: any;
 export interface TeamPlayerInterface {
-  "startDate": any;
-  "endDate": any;
-  "team": any;
-  "player": any;
+  "startDate": Date;
+  "endDate": Date;
+  "team": string;
+  "player": string;
   "id"?: any;
+  "teamId"?: any;
 }
 
 export class TeamPlayer implements TeamPlayerInterface {
-  "startDate": any;
-  "endDate": any;
-  "team": any;
-  "player": any;
+  "startDate": Date;
+  "endDate": Date;
+  "team": string;
+  "player": string;
   "id": any;
+  "teamId": any;
   constructor(data?: TeamPlayerInterface) {
     Object.assign(this, data);
   }
@@ -48,22 +50,26 @@ export class TeamPlayer implements TeamPlayerInterface {
       properties: {
         "startDate": {
           name: 'startDate',
-          type: 'any'
+          type: 'Date'
         },
         "endDate": {
           name: 'endDate',
-          type: 'any'
+          type: 'Date'
         },
         "team": {
           name: 'team',
-          type: 'any'
+          type: 'string'
         },
         "player": {
           name: 'player',
-          type: 'any'
+          type: 'string'
         },
         "id": {
           name: 'id',
+          type: 'any'
+        },
+        "teamId": {
+          name: 'teamId',
           type: 'any'
         },
       },

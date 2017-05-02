@@ -38,7 +38,8 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
     let dialogRef:MdDialogRef<ChampionshipAddTeamComponent> = this.dialog.open(ChampionshipAddTeamComponent, {height: '400px', width: '700px'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        let data = {"championshipRowId": self.current.id, "teamId": result, "subDate": new Date()};
+        // problemLLL
+        let data = {"championshipRow": self.current.id, "team": result.id, "subDate": new Date()};
         self.childrenApi.create(data).subscribe((www: any) => {
           self.loadData(self.id);
         });
@@ -47,26 +48,36 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
   }
 
   loadData(id: any): void {
+
+    console.log("This is load data");
+
     this.dataApi.findById(id).subscribe((data: Championship) => {
+      console.log("This is load data 2");
       this.data = data;
       var self = this;
-      this.currentRowApi.findOne({ where: {championship: self.data.id}}).subscribe(rows => {
+      this.currentRowApi.find({}).subscribe((rows: Array<ChampionshipRow>) => {
         console.log(rows);
-        if(rows != undefined) {
+        if(rows.length == 0) {
           self.currentRowApi.create({championship: self.data.id, startDate: new Date(), endDate: new Date()}).subscribe((row: any) => {
+            console.log("This shoulld be the current");
             console.log(row);
           });
         } else {
           console.log("This is current");
           console.log(rows);
-          self.current = rows[0];
-          self.childrenApi.find({where: { championship: self.current.id }}).subscribe((teams: TeamChampionshipRow[]) => {
-            self.children = [];
-            console.log(teams);
-            teams.forEach(function(row) {
-              self.children.push(row);
-            });
-          });
+          for (let entry of rows) {
+            if (entry.championship == self.data.id) {
+              self.current = entry;
+              self.childrenApi.find({}).subscribe((teams: TeamChampionshipRow[]) => {
+                self.children = [];
+                console.log(teams);
+                teams.forEach(function(row) {
+                  self.children.push(row);
+                });
+              });
+              break;
+            }
+          }
         }
       });
     });

@@ -19,7 +19,23 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "teamChampionshipRows": {
+      "type": "hasMany",
+      "model": "teamChampionshipRow",
+      "foreignKey": ""
+    },
+    "teamPlayers": {
+      "type": "hasMany",
+      "model": "teamPlayer",
+      "foreignKey": ""
+    },
+    "matches": {
+      "type": "hasMany",
+      "model": "match",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

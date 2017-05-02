@@ -24,9 +24,14 @@ export class TeamService {
                     .catch(this.handleError);
   }
 
+  getTeamsChampionship(id: any): Observable<Team> {
+    return this.http.get(this.teamsUrl + "/" + id)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
-    console.log(body);
     return body || [];
   }
 

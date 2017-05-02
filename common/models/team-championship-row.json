@@ -14,17 +14,21 @@
       "type": "number",
       "required": true,
       "default": 0
-    },
-    "team": {
-      "type": "string",
-      "required": true
-    },
-    "championshipRow": {
-      "type": "string",
-      "required": true
     }
   },
   "validations": [],
+  "relations": {
+    "championshipRow": {
+      "type": "belongsTo",
+      "model": "championshipRow",
+      "foreignKey": ""
+    },
+    "team": {
+      "type": "belongsTo",
+      "model": "team",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
