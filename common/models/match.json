@@ -9,28 +9,14 @@
     "matchDate": {
       "type": "date",
       "required": true
-    },
-    "teamAGoals": {
-      "type": "number"
-    },
-    "teamBGoals": {
-      "type": "number"
-    },
-    "winnerTeam": {
-      "type": "string"
     }
   },
   "validations": [],
   "relations": {
-    "teamA": {
-      "type": "belongsTo",
-      "model": "team",
-      "foreignKey": "id"
-    },
-    "teamB": {
-      "type": "belongsTo",
-      "model": "team",
-      "foreignKey": "id"
+    "team-matches": {
+      "type": "hasMany",
+      "model": "team-match",
+      "foreignKey": ""
     }
   },
   "acls": [],

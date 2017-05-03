@@ -1,8 +1,8 @@
 /* tslint:disable */
 import {
   TeamChampionshipRow,
-  Match,
-  TeamPlayer
+  TeamPlayer,
+  Team-match
 } from '../index';
 
 declare var Object: any;
@@ -12,8 +12,8 @@ export interface TeamInterface {
   "description": string;
   "id"?: any;
   teamChampionshipRows?: TeamChampionshipRow[];
-  matches?: Match[];
   teamPlayers?: TeamPlayer[];
+  team-matches?: Team-match[];
 }
 
 export class Team implements TeamInterface {
@@ -22,8 +22,8 @@ export class Team implements TeamInterface {
   "description": string;
   "id": any;
   teamChampionshipRows: TeamChampionshipRow[];
-  matches: Match[];
   teamPlayers: TeamPlayer[];
+  team-matches: Team-match[];
   constructor(data?: TeamInterface) {
     Object.assign(this, data);
   }
@@ -78,15 +78,15 @@ export class Team implements TeamInterface {
           type: 'TeamChampionshipRow[]',
           model: 'TeamChampionshipRow'
         },
-        matches: {
-          name: 'matches',
-          type: 'Match[]',
-          model: 'Match'
-        },
         teamPlayers: {
           name: 'teamPlayers',
           type: 'TeamPlayer[]',
           model: 'TeamPlayer'
+        },
+        team-matches: {
+          name: 'team-matches',
+          type: 'Team-match[]',
+          model: 'Team-match'
         },
       }
     }

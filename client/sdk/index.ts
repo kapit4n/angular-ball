@@ -56,6 +56,7 @@ import { ChampionshipRowApi } from './services/custom/ChampionshipRow';
 import { TeamChampionshipRowApi } from './services/custom/TeamChampionshipRow';
 import { MatchApi } from './services/custom/Match';
 import { TeamPlayerApi } from './services/custom/TeamPlayer';
+import { Team-matchApi } from './services/custom/Team-match';
 /**
 * @module SDKBrowserModule
 * @description
@@ -95,6 +96,7 @@ export class SDKBrowserModule {
         TeamChampionshipRowApi,
         MatchApi,
         TeamPlayerApi,
+        Team-matchApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }

@@ -1,0 +1,29 @@
+{
+  "name": "team-match",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "goals": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {
+    "team": {
+      "type": "belongsTo",
+      "model": "team",
+      "foreignKey": ""
+    },
+    "match": {
+      "type": "belongsTo",
+      "model": "match",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

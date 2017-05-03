@@ -61,7 +61,6 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
               self.current = entry;
               self.currentRowApi.getTeamChampionshipRows(self.current.id, {include: {"relation": "team"}, order: ['points DESC']}).subscribe((teams: TeamChampionshipRow[]) => {
                 self.children = teams;
-                console.log(teams);
               });
               break;
           }

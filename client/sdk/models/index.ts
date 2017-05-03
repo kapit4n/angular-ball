@@ -7,5 +7,6 @@ export * from './ChampionshipRow';
 export * from './TeamChampionshipRow';
 export * from './Match';
 export * from './TeamPlayer';
+export * from './Team-match';
 export * from './BaseModels';
 export * from './FireLoopRef';

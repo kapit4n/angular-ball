@@ -30,9 +30,9 @@
       "model": "teamPlayer",
       "foreignKey": ""
     },
-    "matches": {
+    "team-matches": {
       "type": "hasMany",
-      "model": "match",
+      "model": "team-match",
       "foreignKey": ""
     }
   },

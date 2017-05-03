@@ -1,29 +1,19 @@
 /* tslint:disable */
 import {
-  Team
+  Team-match
 } from '../index';
 
 declare var Object: any;
 export interface MatchInterface {
   "matchDate": Date;
-  "teamAGoals"?: number;
-  "teamBGoals"?: number;
-  "winnerTeam"?: string;
   "id"?: any;
-  "teamId"?: any;
-  teamA?: Team;
-  teamB?: Team;
+  team-matches?: Team-match[];
 }
 
 export class Match implements MatchInterface {
   "matchDate": Date;
-  "teamAGoals": number;
-  "teamBGoals": number;
-  "winnerTeam": string;
   "id": any;
-  "teamId": any;
-  teamA: Team;
-  teamB: Team;
+  team-matches: Team-match[];
   constructor(data?: MatchInterface) {
     Object.assign(this, data);
   }
@@ -59,37 +49,16 @@ export class Match implements MatchInterface {
           name: 'matchDate',
           type: 'Date'
         },
-        "teamAGoals": {
-          name: 'teamAGoals',
-          type: 'number'
-        },
-        "teamBGoals": {
-          name: 'teamBGoals',
-          type: 'number'
-        },
-        "winnerTeam": {
-          name: 'winnerTeam',
-          type: 'string'
-        },
         "id": {
           name: 'id',
           type: 'any'
         },
-        "teamId": {
-          name: 'teamId',
-          type: 'any'
-        },
       },
       relations: {
-        teamA: {
-          name: 'teamA',
-          type: 'Team',
-          model: 'Team'
-        },
-        teamB: {
-          name: 'teamB',
-          type: 'Team',
-          model: 'Team'
+        team-matches: {
+          name: 'team-matches',
+          type: 'Team-match[]',
+          model: 'Team-match'
         },
       }
     }
