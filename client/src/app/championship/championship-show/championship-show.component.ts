@@ -39,7 +39,7 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
     let dialogRef:MdDialogRef<ChampionshipAddTeamComponent> = this.dialog.open(ChampionshipAddTeamComponent, {height: '400px', width: '700px'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        let data = {"championshipRowId": self.current.id, "teamId": result.id, "subDate": new Date()};
+        let data = {"championshipRowId": self.current.id, "teamId": result.id, "subDate": new Date(), "points": "10"};
         self.childrenApi.create(data).subscribe((www: any) => {
           self.loadData(self.id);
         });
@@ -59,8 +59,9 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
         } else {
           for (let entry of rows) {
               self.current = entry;
-              self.currentRowApi.getTeamChampionshipRows(self.current.id, {include: {"relation": "team"}}).subscribe((teams: TeamChampionshipRow[]) => {
+              self.currentRowApi.getTeamChampionshipRows(self.current.id, {include: {"relation": "team"}, order: ['points DESC']}).subscribe((teams: TeamChampionshipRow[]) => {
                 self.children = teams;
+                console.log(teams);
               });
               break;
           }

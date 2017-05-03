@@ -3,7 +3,7 @@
     <i class="large material-icons">mode_edit</i>
   </a>
   <div class="row">
-    <div class="col s12 m9">
+    <div class="col s12 m12">
       <div class="card">
         <span class="card-title" style="color: red; text-transform: uppercase;">{{data.name}}</span>
         <div class="card-image">
@@ -23,6 +23,7 @@
     <li class="collection-item avatar" *ngFor="let rowTeams of children">
       <img src="{{rowTeams.team.logoUrl}}" alt="" class="circle">
       <a [routerLink]="['/team/show', rowTeams.team.id]" ><span class="title" style=" text-transform: uppercase;">{{rowTeams.team.name}}</span></a>
+      <span class="title" style=" text-transform: uppercase;">{{rowTeams.points}}</span>
       <a class="btn-floating btn waves-effect waves-light red" (click)="removeChildren(rowTeams.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
     </li>
   </ul>
