@@ -60,7 +60,7 @@
     "dataSource": "db",
     "public": true
   },
-  "team-match": {
+  "teamMatch": {
     "dataSource": "db",
     "public": true
   }

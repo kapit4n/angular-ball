@@ -12,7 +12,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
 import { Match } from '../../models/Match';
 import { SocketConnection } from '../../sockets/socket.connections';
-import { Team-match } from '../../models/Team-match';
+import { TeamMatch } from '../../models/TeamMatch';
 
 
 /**
@@ -33,11 +33,11 @@ export class MatchApi extends BaseLoopBackApi {
   }
 
   /**
-   * Find a related item by id for team-matches.
+   * Find a related item by id for teamMatches.
    *
    * @param {any} id match id
    *
-   * @param {any} fk Foreign key for team-matches
+   * @param {any} fk Foreign key for teamMatches
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -48,10 +48,10 @@ export class MatchApi extends BaseLoopBackApi {
    * This usually means the response is a `Match` object.)
    * </em>
    */
-  public findByIdTeam-matches(id: any, fk: any): Observable<any> {
+  public findByIdTeamMatches(id: any, fk: any): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/matches/:id/team-matches/:fk";
+    "/matches/:id/teamMatches/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -63,11 +63,11 @@ export class MatchApi extends BaseLoopBackApi {
   }
 
   /**
-   * Delete a related item by id for team-matches.
+   * Delete a related item by id for teamMatches.
    *
    * @param {any} id match id
    *
-   * @param {any} fk Foreign key for team-matches
+   * @param {any} fk Foreign key for teamMatches
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -75,10 +75,10 @@ export class MatchApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public destroyByIdTeam-matches(id: any, fk: any): Observable<any> {
+  public destroyByIdTeamMatches(id: any, fk: any): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/matches/:id/team-matches/:fk";
+    "/matches/:id/teamMatches/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -90,11 +90,11 @@ export class MatchApi extends BaseLoopBackApi {
   }
 
   /**
-   * Update a related item by id for team-matches.
+   * Update a related item by id for teamMatches.
    *
    * @param {any} id match id
    *
-   * @param {any} fk Foreign key for team-matches
+   * @param {any} fk Foreign key for teamMatches
    *
    * @param {object} data Request data.
    *
@@ -109,10 +109,10 @@ export class MatchApi extends BaseLoopBackApi {
    * This usually means the response is a `Match` object.)
    * </em>
    */
-  public updateByIdTeam-matches(id: any, fk: any, data: any = {}): Observable<any> {
+  public updateByIdTeamMatches(id: any, fk: any, data: any = {}): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/matches/:id/team-matches/:fk";
+    "/matches/:id/teamMatches/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -126,7 +126,7 @@ export class MatchApi extends BaseLoopBackApi {
   }
 
   /**
-   * Queries team-matches of match.
+   * Queries teamMatches of match.
    *
    * @param {any} id match id
    *
@@ -141,10 +141,10 @@ export class MatchApi extends BaseLoopBackApi {
    * This usually means the response is a `Match` object.)
    * </em>
    */
-  public getTeam-matches(id: any, filter: LoopBackFilter = {}): Observable<any> {
+  public getTeamMatches(id: any, filter: LoopBackFilter = {}): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/matches/:id/team-matches";
+    "/matches/:id/teamMatches";
     let _routeParams: any = {
       id: id
     };
@@ -156,7 +156,7 @@ export class MatchApi extends BaseLoopBackApi {
   }
 
   /**
-   * Creates a new instance in team-matches of this model.
+   * Creates a new instance in teamMatches of this model.
    *
    * @param {any} id match id
    *
@@ -173,10 +173,10 @@ export class MatchApi extends BaseLoopBackApi {
    * This usually means the response is a `Match` object.)
    * </em>
    */
-  public createTeam-matches(id: any, data: any = {}): Observable<any> {
+  public createTeamMatches(id: any, data: any = {}): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/matches/:id/team-matches";
+    "/matches/:id/teamMatches";
     let _routeParams: any = {
       id: id
     };
@@ -189,7 +189,7 @@ export class MatchApi extends BaseLoopBackApi {
   }
 
   /**
-   * Deletes all team-matches of this model.
+   * Deletes all teamMatches of this model.
    *
    * @param {any} id match id
    *
@@ -199,10 +199,10 @@ export class MatchApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public deleteTeam-matches(id: any): Observable<any> {
+  public deleteTeamMatches(id: any): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/matches/:id/team-matches";
+    "/matches/:id/teamMatches";
     let _routeParams: any = {
       id: id
     };
@@ -213,7 +213,7 @@ export class MatchApi extends BaseLoopBackApi {
   }
 
   /**
-   * Counts team-matches of match.
+   * Counts teamMatches of match.
    *
    * @param {any} id match id
    *
@@ -227,10 +227,10 @@ export class MatchApi extends BaseLoopBackApi {
    *
    *  - `count` – `{number}` - 
    */
-  public countTeam-matches(id: any, where: any = {}): Observable<any> {
+  public countTeamMatches(id: any, where: any = {}): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/matches/:id/team-matches/count";
+    "/matches/:id/teamMatches/count";
     let _routeParams: any = {
       id: id
     };
@@ -242,7 +242,7 @@ export class MatchApi extends BaseLoopBackApi {
   }
 
   /**
-   * Creates a new instance in team-matches of this model.
+   * Creates a new instance in teamMatches of this model.
    *
    * @param {any} id match id
    *
@@ -259,10 +259,10 @@ export class MatchApi extends BaseLoopBackApi {
    * This usually means the response is a `Match` object.)
    * </em>
    */
-  public createManyTeam-matches(id: any, data: any[] = []): Observable<any> {
+  public createManyTeamMatches(id: any, data: any[] = []): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/matches/:id/team-matches";
+    "/matches/:id/teamMatches";
     let _routeParams: any = {
       id: id
     };

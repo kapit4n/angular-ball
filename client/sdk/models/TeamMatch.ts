@@ -1,44 +1,44 @@
 /* tslint:disable */
 import {
-  Team,
-  Match
+  Match,
+  Team
 } from '../index';
 
 declare var Object: any;
-export interface Team-matchInterface {
-  "goals"?: number;
+export interface TeamMatchInterface {
+  "goals": number;
   "id"?: any;
-  "teamId"?: any;
   "matchId"?: any;
-  team?: Team;
+  "teamId"?: any;
   match?: Match;
+  team?: Team;
 }
 
-export class Team-match implements Team-matchInterface {
+export class TeamMatch implements TeamMatchInterface {
   "goals": number;
   "id": any;
-  "teamId": any;
   "matchId": any;
-  team: Team;
+  "teamId": any;
   match: Match;
-  constructor(data?: Team-matchInterface) {
+  team: Team;
+  constructor(data?: TeamMatchInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `Team-match`.
+   * i.e. `TeamMatch`.
    */
   public static getModelName() {
-    return "Team-match";
+    return "TeamMatch";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of Team-match for dynamic purposes.
+  * This method creates an instance of TeamMatch for dynamic purposes.
   **/
-  public static factory(data: Team-matchInterface): Team-match{
-    return new Team-match(data);
+  public static factory(data: TeamMatchInterface): TeamMatch{
+    return new TeamMatch(data);
   }
   /**
   * @method getModelDefinition
@@ -49,8 +49,8 @@ export class Team-match implements Team-matchInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'Team-match',
-      plural: 'Team-matches',
+      name: 'TeamMatch',
+      plural: 'TeamMatches',
       properties: {
         "goals": {
           name: 'goals',
@@ -61,25 +61,25 @@ export class Team-match implements Team-matchInterface {
           name: 'id',
           type: 'any'
         },
-        "teamId": {
-          name: 'teamId',
-          type: 'any'
-        },
         "matchId": {
           name: 'matchId',
           type: 'any'
         },
+        "teamId": {
+          name: 'teamId',
+          type: 'any'
+        },
       },
       relations: {
-        team: {
-          name: 'team',
-          type: 'Team',
-          model: 'Team'
-        },
         match: {
           name: 'match',
           type: 'Match',
           model: 'Match'
+        },
+        team: {
+          name: 'team',
+          type: 'Team',
+          model: 'Team'
         },
       }
     }

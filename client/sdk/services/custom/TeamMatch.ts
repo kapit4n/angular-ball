@@ -10,17 +10,17 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { Team-match } from '../../models/Team-match';
+import { TeamMatch } from '../../models/TeamMatch';
 import { SocketConnection } from '../../sockets/socket.connections';
-import { Team } from '../../models/Team';
 import { Match } from '../../models/Match';
+import { Team } from '../../models/Team';
 
 
 /**
- * Api services for the `Team-match` model.
+ * Api services for the `TeamMatch` model.
  */
 @Injectable()
-export class Team-matchApi extends BaseLoopBackApi {
+export class TeamMatchApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -34,9 +34,9 @@ export class Team-matchApi extends BaseLoopBackApi {
   }
 
   /**
-   * Fetches belongsTo relation team.
+   * Fetches belongsTo relation match.
    *
-   * @param {any} id team-match id
+   * @param {any} id teamMatch id
    *
    * @param {boolean} refresh 
    *
@@ -46,13 +46,13 @@ export class Team-matchApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Team-match` object.)
+   * This usually means the response is a `TeamMatch` object.)
    * </em>
    */
-  public getTeam(id: any, refresh: any = {}): Observable<any> {
+  public getMatch(id: any, refresh: any = {}): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/team-matches/:id/team";
+    "/teamMatches/:id/match";
     let _routeParams: any = {
       id: id
     };
@@ -64,9 +64,9 @@ export class Team-matchApi extends BaseLoopBackApi {
   }
 
   /**
-   * Fetches belongsTo relation match.
+   * Fetches belongsTo relation team.
    *
-   * @param {any} id team-match id
+   * @param {any} id teamMatch id
    *
    * @param {boolean} refresh 
    *
@@ -76,13 +76,13 @@ export class Team-matchApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Team-match` object.)
+   * This usually means the response is a `TeamMatch` object.)
    * </em>
    */
-  public getMatch(id: any, refresh: any = {}): Observable<any> {
+  public getTeam(id: any, refresh: any = {}): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/team-matches/:id/match";
+    "/teamMatches/:id/team";
     let _routeParams: any = {
       id: id
     };
@@ -95,9 +95,9 @@ export class Team-matchApi extends BaseLoopBackApi {
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `Team-match`.
+   * i.e. `TeamMatch`.
    */
   public getModelName() {
-    return "Team-match";
+    return "TeamMatch";
   }
 }

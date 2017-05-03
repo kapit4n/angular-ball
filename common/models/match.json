@@ -13,9 +13,9 @@
   },
   "validations": [],
   "relations": {
-    "team-matches": {
+    "teamMatches": {
       "type": "hasMany",
-      "model": "team-match",
+      "model": "teamMatch",
       "foreignKey": ""
     }
   },

@@ -1,5 +1,5 @@
 {
-  "name": "team-match",
+  "name": "teamMatch",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -8,19 +8,20 @@
   "properties": {
     "goals": {
       "type": "number",
+      "required": true,
       "default": 0
     }
   },
   "validations": [],
   "relations": {
-    "team": {
-      "type": "belongsTo",
-      "model": "team",
-      "foreignKey": ""
-    },
     "match": {
       "type": "belongsTo",
       "model": "match",
+      "foreignKey": ""
+    },
+    "team": {
+      "type": "belongsTo",
+      "model": "team",
       "foreignKey": ""
     }
   },

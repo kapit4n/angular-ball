@@ -2,7 +2,7 @@
 import {
   TeamChampionshipRow,
   TeamPlayer,
-  Team-match
+  TeamMatch
 } from '../index';
 
 declare var Object: any;
@@ -13,7 +13,7 @@ export interface TeamInterface {
   "id"?: any;
   teamChampionshipRows?: TeamChampionshipRow[];
   teamPlayers?: TeamPlayer[];
-  team-matches?: Team-match[];
+  teamMatches?: TeamMatch[];
 }
 
 export class Team implements TeamInterface {
@@ -23,7 +23,7 @@ export class Team implements TeamInterface {
   "id": any;
   teamChampionshipRows: TeamChampionshipRow[];
   teamPlayers: TeamPlayer[];
-  team-matches: Team-match[];
+  teamMatches: TeamMatch[];
   constructor(data?: TeamInterface) {
     Object.assign(this, data);
   }
@@ -83,10 +83,10 @@ export class Team implements TeamInterface {
           type: 'TeamPlayer[]',
           model: 'TeamPlayer'
         },
-        team-matches: {
-          name: 'team-matches',
-          type: 'Team-match[]',
-          model: 'Team-match'
+        teamMatches: {
+          name: 'teamMatches',
+          type: 'TeamMatch[]',
+          model: 'TeamMatch'
         },
       }
     }
