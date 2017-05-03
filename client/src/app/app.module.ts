@@ -29,6 +29,15 @@ import { MatchComponent } from './match/match/match.component';
 const appRoutes: Routes = [
   { path: '', component: AppComponent },
   {
+    path: 'match', component: MatchComponent,
+    children: [
+      { path: '', component: MatchListComponent },
+      { path: 'add', component: MatchAddComponent },
+      { path: 'show/:id', component: MatchShowComponent },
+      { path: 'edit/:id', component: MatchEditComponent }
+    ]
+  },
+  {
     path: 'team', component: TeamComponent,
     children: [
       { path: '', component: TeamListComponent },
@@ -61,10 +70,8 @@ const appRoutes: Routes = [
     ChampionshipAddComponent, ChampionshipListComponent,
     TeamComponent, ChampionshipComponent,
     ChampionshipAddTeamComponent,
-    MatchAddComponent,
-    MatchEditComponent,
-    MatchListComponent,
-    MatchShowComponent,
+    MatchAddComponent, MatchEditComponent,
+    MatchListComponent, MatchShowComponent,
     MatchComponent
   ],
   entryComponents: [ChampionshipAddTeamComponent],
