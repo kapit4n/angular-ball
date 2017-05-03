@@ -19,6 +19,7 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
   id: any;
   paramsSub: any;
   myState = 'AL';
+  teamsAssigned = {};
   states: TeamChampionshipRow[];
 
   constructor(private activatedRoute: ActivatedRoute, private dataApi: ChampionshipApi,
@@ -38,8 +39,7 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
     let dialogRef:MdDialogRef<ChampionshipAddTeamComponent> = this.dialog.open(ChampionshipAddTeamComponent, {height: '400px', width: '700px'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // problemLLL
-        let data = {"championshipRow": self.current.id, "team": result.id, "subDate": new Date()};
+        let data = {"championshipRowId": self.current.id, "teamId": result.id, "subDate": new Date()};
         self.childrenApi.create(data).subscribe((www: any) => {
           self.loadData(self.id);
         });
@@ -48,35 +48,21 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
   }
 
   loadData(id: any): void {
-
-    console.log("This is load data");
-
     this.dataApi.findById(id).subscribe((data: Championship) => {
-      console.log("This is load data 2");
       this.data = data;
       var self = this;
-      this.currentRowApi.find({}).subscribe((rows: Array<ChampionshipRow>) => {
-        console.log(rows);
+      this.dataApi.getChampionshipRows(self.id).subscribe((rows: Array<ChampionshipRow>) => {
         if(rows.length == 0) {
-          self.currentRowApi.create({championship: self.data.id, startDate: new Date(), endDate: new Date()}).subscribe((row: any) => {
-            console.log("This shoulld be the current");
-            console.log(row);
+          self.dataApi.createChampionshipRows(self.id, {startDate: new Date(), endDate: new Date()}).subscribe((row: ChampionshipRow) => {
+            self.current = row;
           });
         } else {
-          console.log("This is current");
-          console.log(rows);
           for (let entry of rows) {
-            if (entry.championship == self.data.id) {
               self.current = entry;
-              self.childrenApi.find({}).subscribe((teams: TeamChampionshipRow[]) => {
-                self.children = [];
-                console.log(teams);
-                teams.forEach(function(row) {
-                  self.children.push(row);
-                });
+              self.currentRowApi.getTeamChampionshipRows(self.current.id, {include: {"relation": "team"}}).subscribe((teams: TeamChampionshipRow[]) => {
+                self.children = teams;
               });
               break;
-            }
           }
         }
       });
