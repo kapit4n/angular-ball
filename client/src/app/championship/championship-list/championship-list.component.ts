@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ChampionshipService } from '../../championship.service';
 import { ChampionshipApi }            from '../../../../sdk/services';
 import { Championship }  from '../../../../sdk/models';
 import {LoadListDataInterface} from '../../loadListDataInterface'
@@ -8,12 +7,12 @@ import {LoadListDataInterface} from '../../loadListDataInterface'
   selector: 'app-championship-list',
   templateUrl: './championship-list.component.html',
   styleUrls: ['./championship-list.component.css'],
-  providers: [ChampionshipService, ChampionshipApi]
+  providers: [ChampionshipApi]
 })
 export class ChampionshipListComponent implements OnInit, LoadListDataInterface {
 	data = [];
   
-  constructor(private championshipService: ChampionshipService, private dataApi : ChampionshipApi) {
+  constructor(private dataApi : ChampionshipApi) {
     
   }
 
