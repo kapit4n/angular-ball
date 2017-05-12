@@ -7,6 +7,28 @@
       <div class="card">
         <span class="card-title" style="color: red; text-transform: uppercase;">{{data.matchDate}}</span>
       </div>
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>Teams A</h4></li>
+        <li class="collection-item avatar">
+          <img src="{{teamA.id}}" alt="" class="circle">
+          <a [routerLink]="['/team/show', teamA.id]" ><span class="title" style=" text-transform: uppercase;">{{teamA.id}}</span></a>
+          <span class="title" style=" text-transform: uppercase;">{{teamA.goals}}</span>
+          <a class="btn-floating btn waves-effect waves-light red" (click)="removeChildren(teamA.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
+        </li>
+      </ul>
+
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>Teams B</h4></li>
+        <li class="collection-item avatar">
+          <img src="{{teamB.id}}" alt="" class="circle">
+          <a [routerLink]="['/team/show', teamB.id]" ><span class="title" style=" text-transform: uppercase;">{{teamB.id}}</span></a>
+          <span class="title" style=" text-transform: uppercase;">{{teamB.goals}}</span>
+          <a class="btn-floating btn waves-effect waves-light red" (click)="removeChildren(teamB.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
+        </li>
+      </ul>
+      <div>
+        <button md-button (click)="openDialog()">Add Local Team</button>
+      </div>
     </div>
   </div>
 </div>

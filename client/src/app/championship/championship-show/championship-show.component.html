@@ -29,8 +29,5 @@
   </ul>
   <div>
     <button md-button (click)="openDialog()">Add Another Team</button>
-    <md-select placeholder="State" [(ngModel)]="myState">
-      <md-option *ngFor="let state of children" [value]="state.code">{{ state.id }}</md-option>
-    </md-select>
   </div>
 </div>
