@@ -17,6 +17,11 @@
       "type": "hasMany",
       "model": "teamMatch",
       "foreignKey": ""
+    },
+    "championshipRow": {
+      "type": "belongsTo",
+      "model": "championshipRow",
+      "foreignKey": ""
     }
   },
   "acls": [],
