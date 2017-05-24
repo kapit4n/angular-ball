@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ChampionshipApi, ChampionshipRowApi, TeamChampionshipRowApi }            from '../../../../sdk/services';
-import { Championship, Team, TeamChampionshipRow, ChampionshipRow }  from '../../../../sdk/models';
+import { ChampionshipApi, ChampionshipRowApi, TeamChampionshipRowApi, MatchApi }            from '../../../../sdk/services';
+import { Championship, Team, TeamChampionshipRow, ChampionshipRow, Match }  from '../../../../sdk/models';
 import { LoadDataWithChildrenInterface } from '../../loadDataInterface'
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { ChampionshipAddTeamComponent } from './../championship-add-team/championship-add-team.component';
@@ -16,6 +16,7 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
   data: any;
   current: any;
   children: any[];
+  matches: any[];
   id: any;
   paramsSub: any;
   myState = 'AL';
@@ -23,9 +24,12 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
   states: TeamChampionshipRow[];
 
   constructor(private activatedRoute: ActivatedRoute, private dataApi: ChampionshipApi,
-              private childrenApi: TeamChampionshipRowApi, private currentRowApi: ChampionshipRowApi, public dialog: MdDialog) {
+              private childrenApi: TeamChampionshipRowApi,
+              private currentRowApi: ChampionshipRowApi, private matchApi: MatchApi,
+              public dialog: MdDialog) {
     this.data = {name: "", logoUrl: "", description: ""};
     this.children = [];
+    this.matches = [];
     this.current = {id : "1"}
     this.paramsSub = this.activatedRoute.params.subscribe(params => { 
         this.id = params['id'];
@@ -63,6 +67,9 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
               self.currentRowApi.getTeamChampionshipRows(self.current.id, {include: {"relation": "team"}, order: ['points DESC']}).subscribe((teams: TeamChampionshipRow[]) => {
                 self.children = teams;
               });
+              self.currentRowApi.getMatches(self.current.id).subscribe((matches: Match[]) => {
+                self.matches = matches;
+              });
               break;
           }
         }
@@ -78,6 +85,13 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
   removeChildren(rowId: any): void {
     var self = this;
     this.childrenApi.deleteById(rowId).subscribe((data: any) => {
+      self.loadData(self.id);
+    });
+  }
+
+  removeMatch(rowId: any): void {
+    var self = this;
+    this.matchApi.deleteById(rowId).subscribe((data: any) => {
       self.loadData(self.id);
     });
   }

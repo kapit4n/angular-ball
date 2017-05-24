@@ -16,10 +16,9 @@ export class MatchAddComponent implements OnInit {
   championshipRowId: any;
 
   constructor(private activatedRoute: ActivatedRoute, private dataApi: MatchApi, private router: Router) {
-    let chamId = "1";
     this.paramsSub = this.activatedRoute.params.subscribe(params => { 
-        this.championshipRowId = params['championshipRowId'];
-        this.data = {matchDate: "05/10/2017", championshipRowId: this.championshipRowId};
+        let championshipRowId = params['championshipRowId'];
+        this.data = {matchDate: "05/10/2017", championshipRowId: championshipRowId};
       }
     );
   }
