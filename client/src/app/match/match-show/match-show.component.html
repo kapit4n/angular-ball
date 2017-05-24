@@ -12,7 +12,7 @@
         <li class="collection-item avatar">
           <img src="{{teamA.id}}" alt="" class="circle">
           <a [routerLink]="['/team/show', teamA.id]" ><span class="title" style=" text-transform: uppercase;">{{teamA.id}}</span></a>
-          <span class="title" style=" text-transform: uppercase;">{{teamA.goals}}</span>
+          <span class="title" style="text-transform: uppercase;">{{teamA.goals}}</span>
           <a class="btn-floating btn waves-effect waves-light red" (click)="removeChildren(teamA.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
         </li>
       </ul>

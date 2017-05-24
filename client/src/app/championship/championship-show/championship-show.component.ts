@@ -26,6 +26,7 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
               private childrenApi: TeamChampionshipRowApi, private currentRowApi: ChampionshipRowApi, public dialog: MdDialog) {
     this.data = {name: "", logoUrl: "", description: ""};
     this.children = [];
+    this.current = {id : "1"}
     this.paramsSub = this.activatedRoute.params.subscribe(params => { 
         this.id = params['id'];
         this.loadData(this.id);
