@@ -25,6 +25,7 @@ import { MatchEditComponent } from './match/match-edit/match-edit.component';
 import { MatchListComponent } from './match/match-list/match-list.component';
 import { MatchShowComponent } from './match/match-show/match-show.component';
 import { MatchComponent } from './match/match/match.component';
+import { MatchAddTeamComponent } from './match/match-add-team/match-add-team.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent },
@@ -72,7 +73,8 @@ const appRoutes: Routes = [
     ChampionshipAddTeamComponent,
     MatchAddComponent, MatchEditComponent,
     MatchListComponent, MatchShowComponent,
-    MatchComponent
+    MatchComponent,
+    MatchAddTeamComponent
   ],
   entryComponents: [ChampionshipAddTeamComponent],
   imports: [

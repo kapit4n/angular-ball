@@ -6,7 +6,7 @@ import { TeamMatchApi }            from '../../../../sdk/services';
 import { Match, TeamMatch }  from '../../../../sdk/models';
 import { LoadDataInterface } from '../../loadDataInterface'
 import { MdDialog, MdDialogRef } from '@angular/material';
-import { ChampionshipAddTeamComponent } from './../../championship/championship-add-team/championship-add-team.component';
+import { MatchAddTeamComponent } from '../match-add-team/match-add-team.component';
 
 @Component({
   selector: 'app-match-show',
@@ -31,9 +31,22 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
     );
   }
 
-  openDialog() {
+  openDialogAddLocalTeam() {
     var self = this;
-    let dialogRef:MdDialogRef<ChampionshipAddTeamComponent> = this.dialog.open(ChampionshipAddTeamComponent, {height: '400px', width: '700px'});
+    let dialogRef:MdDialogRef<MatchAddTeamComponent> = this.dialog.open(MatchAddTeamComponent, {height: '400px', width: '700px'});
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        let data = {"matchId": self.id, "teamId": result.id, "goals": "10"};
+        self.teamMatchApi.create(data).subscribe((www: any) => {
+          self.loadData(self.id);
+        });
+      }
+    });
+  }
+
+  openDialogVisitorTeam() {
+    var self = this;
+    let dialogRef:MdDialogRef<MatchAddTeamComponent> = this.dialog.open(MatchAddTeamComponent, {height: '400px', width: '700px'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         let data = {"matchId": self.id, "teamId": result.id, "goals": "10"};
@@ -59,6 +72,20 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
           }
         });
       });
+  }
+
+  removeLocalTeam(rowId: any): void {
+    var self = this;
+    this.teamMatchApi.deleteById(rowId).subscribe((data: any) => {
+      self.loadData(self.id);
+    });
+  }
+
+  removeVisitorTeam(rowId: any): void {
+    var self = this;
+    this.teamMatchApi.deleteById(rowId).subscribe((data: any) => {
+      self.loadData(self.id);
+    });
   }
 
   ngOnInit() {
