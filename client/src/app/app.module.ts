@@ -28,7 +28,6 @@ import { MatchComponent } from './match/match/match.component';
 import { MatchAddTeamComponent } from './match/match-add-team/match-add-team.component';
 
 const appRoutes: Routes = [
-  { path: '', component: AppComponent },
   {
     path: 'match', component: MatchComponent,
     children: [

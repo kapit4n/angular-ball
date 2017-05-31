@@ -17,7 +17,7 @@ export class TeamShowComponent implements OnInit, LoadDataInterface {
   paramsSub: any;
   teams = [];
   constructor(private activatedRoute: ActivatedRoute, private dataApi : TeamApi) {
-    this.data = { name: "RRR", logoUrl: "RRR", description: "Des"};
+    this.data = { name: "", logoUrl: "", description: ""};
     this.paramsSub = this.activatedRoute.params.subscribe(params => { 
         this.id = params['id'];
         this.loadData(this.id);

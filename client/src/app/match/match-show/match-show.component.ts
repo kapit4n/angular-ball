@@ -19,13 +19,13 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
   id: any;
   paramsSub: any;
   current: any;
-  teamA: {id: "2", goals: "2"};
-  teamB: {id: "2", goals: "2"};
+  teamA: {id: "2", goals: "2", team: {logoUrl: ""}};
+  teamB: {id: "2", goals: "2", team: {logoUrl: ""}};
   constructor(private activatedRoute: ActivatedRoute, private dataApi : MatchApi,
     public dialog: MdDialog, private teamMatchApi: TeamMatchApi) {
     this.data = { matchDate: "12/12/2017"};
-    this.teamA = {id: "2", goals: "2"};
-    this.teamB = {id: "2", goals: "2"};
+    this.teamA = {id: "2", goals: "2", team: {logoUrl: ""}};
+    this.teamB = {id: "2", goals: "2", team: {logoUrl: ""}};
     this.paramsSub = this.activatedRoute.params.subscribe(params => { 
         this.id = params['id'];
         this.loadData(this.id);
@@ -38,6 +38,8 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
     let dialogRef:MdDialogRef<MatchAddTeamComponent> = this.dialog.open(MatchAddTeamComponent, {height: '400px', width: '700px'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        console.log("This is something that you should work");
+        console.log(result);
         let data = {"matchId": self.id, "teamId": result.id, "goals": "10"};
         self.teamMatchApi.create(data).subscribe((www: any) => {
           self.loadData(self.id);
@@ -64,7 +66,7 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
         this.data = data;
         var self = this;
 
-        this.dataApi.getTeamMatches(self.id).subscribe((rows: Array<any>) => {
+        this.dataApi.getTeamMatches(self.id, {include: {"relation": "team"}}).subscribe((rows: Array<any>) => {
           console.log(rows);
           if (rows.length > 0) {
             self.teamA = rows[0];
