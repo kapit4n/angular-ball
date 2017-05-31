@@ -76,7 +76,7 @@ const appRoutes: Routes = [
     MatchComponent,
     MatchAddTeamComponent
   ],
-  entryComponents: [ChampionshipAddTeamComponent],
+  entryComponents: [ChampionshipAddTeamComponent, MatchAddTeamComponent],
   imports: [
     BrowserModule,
     FormsModule,
