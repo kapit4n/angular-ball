@@ -22,6 +22,7 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
   myState = 'AL';
   teamsAssigned = {};
   states: TeamChampionshipRow[];
+  matchTeams: any[];
 
   constructor(private activatedRoute: ActivatedRoute, private dataApi: ChampionshipApi,
               private childrenApi: TeamChampionshipRowApi,
@@ -30,7 +31,7 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
     this.data = {name: "", logoUrl: "", description: ""};
     this.children = [];
     this.matches = [];
-    this.current = {id : "1"}
+    this.current = {id : ""}
     this.paramsSub = this.activatedRoute.params.subscribe(params => { 
         this.id = params['id'];
         this.loadData(this.id);
@@ -41,6 +42,7 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
 
   openDialog() {
     var self = this;
+
     let dialogRef:MdDialogRef<ChampionshipAddTeamComponent> = this.dialog.open(ChampionshipAddTeamComponent, {height: '400px', width: '700px'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -55,6 +57,7 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
   loadData(id: any): void {
     this.dataApi.findById(id).subscribe((data: Championship) => {
       this.data = data;
+      this.matchTeams = [];
       var self = this;
       this.dataApi.getChampionshipRows(self.id).subscribe((rows: Array<ChampionshipRow>) => {
         if(rows.length == 0) {
@@ -67,8 +70,14 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
               self.currentRowApi.getTeamChampionshipRows(self.current.id, {include: {"relation": "team"}, order: ['points DESC']}).subscribe((teams: TeamChampionshipRow[]) => {
                 self.children = teams;
               });
-              self.currentRowApi.getMatches(self.current.id).subscribe((matches: Match[]) => {
+              self.currentRowApi.getMatches(self.current.id, {include: {"relation": "teamMatches"}}).subscribe((matches: Match[]) => {
                 self.matches = matches;
+                for (var i = 0; i < self.matches.length; i++) {
+                  let iAux = i;
+                  self.matchApi.getTeamMatches(self.matches[iAux].id, {include: {"relation": "team"}}).subscribe((teams: any[]) => {
+                    self.matchTeams.push({match: self.matches[iAux], teams: teams});
+                  });
+                }
               });
               break;
           }
