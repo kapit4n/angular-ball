@@ -65,6 +65,8 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
       this.dataApi.findById(id).subscribe((data: Match) => {
         this.data = data;
         var self = this;
+        this.teamA = {id: "2", goals: "2", team: {logoUrl: ""}};
+        this.teamB = {id: "2", goals: "2", team: {logoUrl: ""}};
 
         this.dataApi.getTeamMatches(self.id, {include: {"relation": "team"}}).subscribe((rows: Array<any>) => {
           console.log(rows);
