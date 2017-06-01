@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatchApi }            from '../../../../sdk/services';
 import { TeamMatchApi }            from '../../../../sdk/services';
+import { ChampionshipRowApi }            from '../../../../sdk/services';
 import { Match, TeamMatch }  from '../../../../sdk/models';
 import { LoadDataInterface } from '../../loadDataInterface'
 import { MdDialog, MdDialogRef } from '@angular/material';
@@ -22,11 +23,11 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
   teamA: {id: "2", goals: "2", team: {logoUrl: ""}};
   teamB: {id: "2", goals: "2", team: {logoUrl: ""}};
   constructor(private activatedRoute: ActivatedRoute, private dataApi : MatchApi,
-    public dialog: MdDialog, private teamMatchApi: TeamMatchApi) {
-    this.data = { matchDate: "12/12/2017"};
+    public dialog: MdDialog, private teamMatchApi: TeamMatchApi, private championshipRowApi: ChampionshipRowApi) {
+    this.data = { match: {matchDate: "12/12/2017", id: ""}, championship: {id: "1", name: "name"}};
     this.teamA = {id: "2", goals: "2", team: {logoUrl: ""}};
     this.teamB = {id: "2", goals: "2", team: {logoUrl: ""}};
-    this.paramsSub = this.activatedRoute.params.subscribe(params => { 
+    this.paramsSub = this.activatedRoute.params.subscribe(params => {
         this.id = params['id'];
         this.loadData(this.id);
       }
@@ -62,8 +63,10 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
   }
 
   loadData(id: any): void {
-      this.dataApi.findById(id).subscribe((data: Match) => {
-        this.data = data;
+      this.dataApi.findById(id, {include: {"relation": "championshipRow"}}).subscribe((data: Match) => {
+        this.championshipRowApi.getChampionship(data.championshipRowId, {include: {"relation": "championship"}}).subscribe((data2: any) => {
+          this.data = {championship: data2, match: data};
+        });
         var self = this;
         this.teamA = {id: "2", goals: "2", team: {logoUrl: ""}};
         this.teamB = {id: "2", goals: "2", team: {logoUrl: ""}};
