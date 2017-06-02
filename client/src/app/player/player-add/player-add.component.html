@@ -1,3 +1,23 @@
-<p>
-  player-add works!
-</p>
+<div style="min-height: 600px;">
+    <div class="row">
+        <h1>New Player</h1>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Placeholder" [(ngModel)]="data.name" type="text" class="validate" name="name">
+                    <label for="first_name">Name</label>
+                </div>
+                <div class="input-field col s12">
+                    <input placeholder="Avatar" [(ngModel)]="data.avatarUrl" type="text" class="validate" name="avatarUrl">
+                    <label for="biography">Avatar</label>
+                </div>
+                <div class="input-field col s12">
+                    <input placeholder="Biography" [(ngModel)]="data.biography" type="text" class="validate" name="biography">
+                    <label for="biography">Biography</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" (click)="save()" name="action">Save
+            </button>
+        </form>
+    </div>
+</div>
