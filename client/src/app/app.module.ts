@@ -26,6 +26,11 @@ import { MatchListComponent } from './match/match-list/match-list.component';
 import { MatchShowComponent } from './match/match-show/match-show.component';
 import { MatchComponent } from './match/match/match.component';
 import { MatchAddTeamComponent } from './match/match-add-team/match-add-team.component';
+import { PlayerListComponent } from './player/player-list/player-list.component';
+import { PlayerAddComponent } from './player/player-add/player-add.component';
+import { PlayerEditComponent } from './player/player-edit/player-edit.component';
+import { PlayerShowComponent } from './player/player-show/player-show.component';
+import { PlayerComponent } from './player/player/player.component';
 
 const appRoutes: Routes = [
   {
@@ -56,6 +61,16 @@ const appRoutes: Routes = [
       { path: 'edit/:id', component: ChampionshipEditComponent }
     ]
   },
+  {
+    path: 'player',
+    component: PlayerComponent,
+    children: [
+      { path: '', component: PlayerListComponent },
+      { path: 'add', component: PlayerAddComponent },
+      { path: 'show/:id', component: PlayerShowComponent },
+      { path: 'edit/:id', component: PlayerEditComponent }
+    ]
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -73,7 +88,12 @@ const appRoutes: Routes = [
     MatchAddComponent, MatchEditComponent,
     MatchListComponent, MatchShowComponent,
     MatchComponent,
-    MatchAddTeamComponent
+    MatchAddTeamComponent,
+    PlayerListComponent,
+    PlayerAddComponent,
+    PlayerEditComponent,
+    PlayerShowComponent,
+    PlayerComponent
   ],
   entryComponents: [ChampionshipAddTeamComponent, MatchAddTeamComponent],
   imports: [
