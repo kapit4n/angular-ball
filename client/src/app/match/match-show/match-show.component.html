@@ -11,7 +11,7 @@
         <li class="collection-header"><h4>Teams A</h4></li>
         <li class="collection-item avatar">
           <img src="{{teamA.team.logoUrl}}" alt="" class="circle">
-          <a [routerLink]="['/team/show', teamA.id]" ><span class="title" style=" text-transform: uppercase;">{{teamA.id}}</span></a>
+          <a [routerLink]="['/team/show', teamA.team.id]" ><span class="title" style=" text-transform: uppercase;">{{teamA.team.name}}</span></a>
           <span class="title" style="text-transform: uppercase;">{{teamA.goals}}</span>
           <a class="btn-floating btn waves-effect waves-light red" (click)="removeLocalTeam(teamA.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
         </li>
@@ -24,7 +24,7 @@
         <li class="collection-header"><h4>Teams B</h4></li>
         <li class="collection-item avatar">
           <img src="{{teamB.team.logoUrl}}" alt="" class="circle">
-          <a [routerLink]="['/team/show', teamB.id]" ><span class="title" style=" text-transform: uppercase;">{{teamB.id}}</span></a>
+          <a [routerLink]="['/team/show', teamB.team.id]" ><span class="title" style=" text-transform: uppercase;">{{teamB.team.name}}</span></a>
           <span class="title" style=" text-transform: uppercase;">{{teamB.goals}}</span>
           <a class="btn-floating btn waves-effect waves-light red" (click)="removeVisitorTeam(teamB.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
         </li>
