@@ -1,3 +1,13 @@
-<p>
-  match-edit works!
-</p>
+<div class="row">
+    <h1>Edit Match</h1>
+    <form class="col s12">
+        <div class="row">
+            <div class="col s6">
+                <label for="name">Match Date</label>
+                <input id="name" placeholder="Placeholder" [(ngModel)]="data.matchDate" type="text" class="validate" name="name">
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" (click)="save()" name="action">Save
+        </button>
+    </form>
+</div>
