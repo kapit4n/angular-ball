@@ -1,3 +1,21 @@
-<p>
-  player-edit works!
-</p>
+<div class="row">
+    <h1>Edit Team</h1>
+    <form class="col s12">
+        <div class="row">
+            <div class="col s12">
+                <label for="name">Name</label>
+                <input id="name" placeholder="Placeholder" [(ngModel)]="data.name" type="text" class="validate" name="name">
+            </div>
+            <div class="col s12">
+                <label for="avatarUrl">Logo Url</label>
+                <input id="avatarUrl" type="text" [(ngModel)]="data.avatarUrl" class="validate" name="avatarUrl">
+            </div>
+            <div class="col s12">
+                <label for="biography">Description</label>
+                <textarea id="biography" type="text" [(ngModel)]="data.biography" class="materialize-textarea" name="biography"></textarea>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" (click)="save()" name="action">Save
+        </button>
+    </form>
+</div>
