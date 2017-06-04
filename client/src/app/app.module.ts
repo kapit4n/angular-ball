@@ -73,7 +73,7 @@ const appRoutes: Routes = [
       { path: 'edit/:id', component: PlayerEditComponent }
     ]
   },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: ChampionshipListComponent }
 ];
 
 @NgModule({
