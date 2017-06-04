@@ -31,6 +31,7 @@ import { PlayerAddComponent } from './player/player-add/player-add.component';
 import { PlayerEditComponent } from './player/player-edit/player-edit.component';
 import { PlayerShowComponent } from './player/player-show/player-show.component';
 import { PlayerComponent } from './player/player/player.component';
+import { MatchResultUpdateComponent } from './match/match-result-update/match-result-update.component';
 
 const appRoutes: Routes = [
   {
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
       { path: '', component: MatchListComponent },
       { path: 'add', component: MatchAddComponent },
       { path: 'show/:id', component: MatchShowComponent },
-      { path: 'edit/:id', component: MatchEditComponent }
+      { path: 'edit/:id', component: MatchEditComponent },
+      { path: 'match-result-update/:id', component: MatchResultUpdateComponent }
     ]
   },
   {
@@ -93,7 +95,8 @@ const appRoutes: Routes = [
     PlayerAddComponent,
     PlayerEditComponent,
     PlayerShowComponent,
-    PlayerComponent
+    PlayerComponent,
+    MatchResultUpdateComponent
   ],
   entryComponents: [ChampionshipAddTeamComponent, MatchAddTeamComponent],
   imports: [

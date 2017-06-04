@@ -1,0 +1,24 @@
+<div class="row">
+    <h1>Update Goals</h1>
+    <div class="col s12 m12">
+      <div class="card">
+        <span class="card-title" style="color: red; text-transform: uppercase;">{{data.team.name}}</span>
+        <div class="card-image"  style="width: 300px; height: 300px;">
+          <img src="{{data.team.logoUrl}}" style="width: 300px;">
+        </div>
+        <div class="card-content">
+          <p>Match Date: data.match.matchDate</p>
+        </div>
+      </div>
+    </div>
+    <form class="col s12">
+        <div class="row">
+            <div class="col s12">
+                <label for="goals">Goals</label>
+                <input id="goals" placeholder="Placeholder" [(ngModel)]="data.goals" type="text" class="validate" name="goals">
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" (click)="save()" name="action">Save
+        </button>
+    </form>
+</div>
