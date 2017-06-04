@@ -23,11 +23,10 @@
   </md-sidenav>
   <md-toolbar color="primary">
     <button class="app-icon-button" (click)="sidenav.toggle()">
-      <i class="material-icons app-toolbar-menu">menu</i>
+      <i class="material-icons">menu</i>
     </button>
     Sport News
     <span class="app-toolbar-filler"></span>
-    <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
   </md-toolbar>
   <div class="card-panel indigo lighten-1 app-content">
     <router-outlet></router-outlet>
