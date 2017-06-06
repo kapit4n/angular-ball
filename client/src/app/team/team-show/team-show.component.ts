@@ -18,10 +18,11 @@ export class TeamShowComponent implements OnInit, LoadDataInterface {
   data: any;
   id: any;
   paramsSub: any;
-  teams = [];
+  players = [];
   constructor(private activatedRoute: ActivatedRoute, private dataApi : TeamApi,
     public dialog: MdDialog, private teamPlayerApi: TeamPlayerApi) {
     this.data = { name: "", logoUrl: "", description: ""};
+    this.players = [];
     this.paramsSub = this.activatedRoute.params.subscribe(params => { 
         this.id = params['id'];
         this.loadData(this.id);
@@ -32,7 +33,17 @@ export class TeamShowComponent implements OnInit, LoadDataInterface {
   loadData(id: any): void {
       this.dataApi.findById(id).subscribe((data: Team) => {
         this.data = data;
+          this.dataApi.getTeamPlayers(id, {include: {"relation": "player"}}).subscribe((players: any[]) => {
+            this.players = players;
+          });
       });
+  }
+
+  removeChildren(rowId: any): void {
+    var self = this;
+    this.teamPlayerApi.deleteById(rowId).subscribe((data: any) => {
+      self.loadData(self.id);
+    });
   }
 
   ngOnInit() {
@@ -47,7 +58,7 @@ export class TeamShowComponent implements OnInit, LoadDataInterface {
     let dialogRef:MdDialogRef<TeamAddPlayerComponent> = this.dialog.open(TeamAddPlayerComponent, {height: '400px', width: '700px'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        let data = {"teamId": self.id, "playerId": result.id};
+        let data = {"teamId": self.id, "playerId": result.id, startDate: "01/01/2017", endDate: "01/01/2018"};
         self.teamPlayerApi.create(data).subscribe((createdResult: any) => {
           self.loadData(self.id);
         });
