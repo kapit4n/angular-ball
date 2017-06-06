@@ -32,6 +32,7 @@ import { PlayerEditComponent } from './player/player-edit/player-edit.component'
 import { PlayerShowComponent } from './player/player-show/player-show.component';
 import { PlayerComponent } from './player/player/player.component';
 import { MatchResultUpdateComponent } from './match/match-result-update/match-result-update.component';
+import { TeamAddPlayerComponent } from './team/team-add-player/team-add-player.component';
 
 const appRoutes: Routes = [
   {
@@ -96,9 +97,10 @@ const appRoutes: Routes = [
     PlayerEditComponent,
     PlayerShowComponent,
     PlayerComponent,
-    MatchResultUpdateComponent
+    MatchResultUpdateComponent,
+    TeamAddPlayerComponent
   ],
-  entryComponents: [ChampionshipAddTeamComponent, MatchAddTeamComponent],
+  entryComponents: [ChampionshipAddTeamComponent, MatchAddTeamComponent, TeamAddPlayerComponent],
   imports: [
     BrowserModule,
     FormsModule,
