@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatchApi }            from '../../../../sdk/services';
 import { TeamMatchApi }            from '../../../../sdk/services';
+import { MatchGoalApi }            from '../../../../sdk/services';
 import { ChampionshipRowApi }            from '../../../../sdk/services';
 import { Match, TeamMatch }  from '../../../../sdk/models';
 import { LoadDataInterface } from '../../loadDataInterface'
@@ -22,8 +23,11 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
   current: any;
   teamA: {id: "2", goals: "2", team: {logoUrl: ""}};
   teamB: {id: "2", goals: "2", team: {logoUrl: ""}};
+  goals: any[];
+
   constructor(private activatedRoute: ActivatedRoute, private dataApi : MatchApi,
-    public dialog: MdDialog, private teamMatchApi: TeamMatchApi, private championshipRowApi: ChampionshipRowApi) {
+    public dialog: MdDialog, private teamMatchApi: TeamMatchApi, 
+    private matchGoalApi: MatchGoalApi, private championshipRowApi: ChampionshipRowApi) {
     this.data = { match: {matchDate: "12/12/2017", id: ""}, championship: {id: "1", name: "name"}};
     this.teamA = {id: "2", goals: "2", team: {logoUrl: ""}};
     this.teamB = {id: "2", goals: "2", team: {logoUrl: ""}};
@@ -80,6 +84,10 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
             self.teamB = rows[1];
           }
         });
+
+        this.dataApi.getMatchGoals(self.id, {include: {"relation": "player"}}).subscribe((rows: Array<any>) => {
+          this.goals = rows;
+        });
       });
   }
 
@@ -97,10 +105,18 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
     });
   }
 
+  removeGoal(rowId: any): void {
+    var self = this;
+    this.matchGoalApi.deleteById(rowId).subscribe((data: any) => {
+      self.loadData(self.id);
+    });
+  }
+
   ngOnInit() {
   }
 
   ngOnDestroy() {
     this.paramsSub.unsubscribe();
   }
+
 }

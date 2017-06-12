@@ -36,4 +36,15 @@
       </div>
     </div>
   </div>
+ <ul class="collection with-header">
+      <li class="collection-header"><h4>Goals</h4></li>
+      <li class="collection-item avatar" *ngFor="let goalRow of goals">
+        <img src="{{goalRow.player.avatarUrl}}" class="circle">
+        <a [routerLink]="['/player/show', goalRow.player.id]" ><span class="title" style=" text-transform: uppercase;">{{goalRow.player.name}}</span></a>
+        <span class="title" style=" text-transform: uppercase;">Minute: {{goalRow.goalMinute}}</span>
+        
+        <a class="btn-floating btn waves-effect waves-light red" (click)="removeGoal(goalRow.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
+      </li>
+    </ul>
+
 </div>

@@ -22,6 +22,11 @@
       "type": "belongsTo",
       "model": "championshipRow",
       "foreignKey": ""
+    },
+    "matchGoals": {
+      "type": "hasMany",
+      "model": "MatchGoal",
+      "foreignKey": ""
     }
   },
   "acls": [],

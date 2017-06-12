@@ -1,7 +1,8 @@
 /* tslint:disable */
 import {
   ChampionshipRow,
-  TeamMatch
+  TeamMatch,
+  MatchGoal
 } from '../index';
 
 declare var Object: any;
@@ -11,6 +12,7 @@ export interface MatchInterface {
   "championshipRowId"?: any;
   championshipRow?: ChampionshipRow;
   teamMatches?: TeamMatch[];
+  matchGoals?: MatchGoal[];
 }
 
 export class Match implements MatchInterface {
@@ -19,6 +21,7 @@ export class Match implements MatchInterface {
   "championshipRowId": any;
   championshipRow: ChampionshipRow;
   teamMatches: TeamMatch[];
+  matchGoals: MatchGoal[];
   constructor(data?: MatchInterface) {
     Object.assign(this, data);
   }
@@ -73,6 +76,11 @@ export class Match implements MatchInterface {
           name: 'teamMatches',
           type: 'TeamMatch[]',
           model: 'TeamMatch'
+        },
+        matchGoals: {
+          name: 'matchGoals',
+          type: 'MatchGoal[]',
+          model: 'MatchGoal'
         },
       }
     }
