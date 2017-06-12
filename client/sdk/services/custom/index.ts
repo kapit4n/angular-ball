@@ -8,5 +8,6 @@ export * from './TeamChampionshipRow';
 export * from './Match';
 export * from './TeamPlayer';
 export * from './TeamMatch';
+export * from './MatchGoal';
 export * from './SDKModels';
 export * from './logger.service';

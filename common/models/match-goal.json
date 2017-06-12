@@ -1,0 +1,36 @@
+{
+  "name": "MatchGoal",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "goalTime": {
+      "type": "date",
+      "required": true
+    },
+    "goalMinute": {
+      "type": "number",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "match": {
+      "type": "belongsTo",
+      "model": "match",
+      "foreignKey": ""
+    },
+    "player": {
+      "type": "belongsTo",
+      "model": "player",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

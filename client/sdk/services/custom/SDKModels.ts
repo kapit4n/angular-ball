@@ -9,6 +9,7 @@ import { TeamChampionshipRow } from '../../models/TeamChampionshipRow';
 import { Match } from '../../models/Match';
 import { TeamPlayer } from '../../models/TeamPlayer';
 import { TeamMatch } from '../../models/TeamMatch';
+import { MatchGoal } from '../../models/MatchGoal';
 
 export interface Models { [name: string]: any }
 
@@ -25,6 +26,7 @@ export class SDKModels {
     Match: Match,
     TeamPlayer: TeamPlayer,
     TeamMatch: TeamMatch,
+    MatchGoal: MatchGoal,
     
   };
 
