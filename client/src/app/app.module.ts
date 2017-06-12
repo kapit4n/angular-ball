@@ -43,7 +43,8 @@ const appRoutes: Routes = [
       { path: 'add', component: MatchAddComponent },
       { path: 'show/:id', component: MatchShowComponent },
       { path: 'edit/:id', component: MatchEditComponent },
-      { path: 'match-result-update/:id', component: MatchResultUpdateComponent }
+      { path: 'match-result-update/:id', component: MatchResultUpdateComponent },
+      { path: 'goal/add/:id', component: GoalAddComponent }
     ]
   },
   {

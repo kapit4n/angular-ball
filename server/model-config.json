@@ -63,5 +63,9 @@
   "teamMatch": {
     "dataSource": "db",
     "public": true
+  },
+  "MatchGoal": {
+    "dataSource": "db",
+    "public": true
   }
 }

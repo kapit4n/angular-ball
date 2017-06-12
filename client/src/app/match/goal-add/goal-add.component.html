@@ -1,3 +1,36 @@
-<p>
-  goal-add works!
-</p>
+<div style="min-height: 600px;">
+    <a class="btn-floating btn-large red" [routerLink]="['/match/edit', matchGoal.id]">
+        <i class="large material-icons">mode_edit</i>
+    </a>
+    <div class="row">
+        <div class="col s12 m12">
+            <div class="card">
+                <span class="card-title" style="color: red; text-transform: uppercase;"><a [routerLink]="['/championship/show', championship.id]" ><span class="title" style=" text-transform: uppercase;">{{championship.name}}</span>
+                <br /> </a>
+                </span>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <label for="goalMinute">Goal Minute: </label>
+                    <input id="goalMinute" placeholder="" [(ngModel)]="matchGoal.goalMinute" type="text" class="validate" name="goalMinute">
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" (click)="save()" name="action">Update Minute
+            </button>
+            <div class="card">
+                <span class="card-title" style="color: red; text-transform: uppercase;">{{player.name}}</span>
+                <div class="card-image" style="width: 100px; ">
+                    <img src="{{player.avatarUrl}}" alt="" class="circle">
+                </div>
+                <div class="card-content">
+                    <p>
+                        {{player.biography}}
+                    </p>
+                </div>
+            </div>
+            <div>
+                <button md-button (click)="openDialogAddPlayer()">Add Player</button>
+            </div>
+        </div>
+    </div>
+</div>

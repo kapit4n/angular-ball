@@ -6,8 +6,8 @@
     <div class="col s12 m12">
       <div class="card">
         <span class="card-title" style="color: red; text-transform: uppercase;"><a [routerLink]="['/championship/show', data.championship.id]" ><span class="title" style=" text-transform: uppercase;">{{data.championship.name}}</span> <br /> Match Date: </a>{{data.match.matchDate}}</span>
-        &nbsp;&nbsp;
-        <a class="btn-floating btn waves-effect waves-light red" routerLink="/goal/add" routerLinkActive="active"><i class="material-icons">add</i></a><span> Register Goal </span>
+          &nbsp;&nbsp;
+        <a class="btn-floating btn waves-effect waves-light red" [routerLink]="['/match/goal/add', data.match.id]" routerLinkActive="active"><i class="material-icons">add</i></a><span> Register Goal </span>
       </div>
       <ul class="collection with-header">
         <li class="collection-header"><h4>Teams A</h4></li>
