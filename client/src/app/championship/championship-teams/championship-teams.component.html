@@ -1,17 +1,15 @@
 <div>
-  <a class="btn-floating btn waves-effect waves-light red" [routerLink]="['/match/add', {championshipRowId: current.id}]" routerLinkActive="active"><i class="material-icons">add</i></a>
   <ul class="collection with-header">
     <li class="collection-header">
-      <h4>Matches</h4></li>
-    <li class="collection-item avatar" *ngFor="let matchTeam of matchTeams">
-      <a [routerLink]="['/match/show', matchTeam.match.id]"><span class="title" style=" text-transform: uppercase;">Match Date: {{matchTeam.match.matchDate}}</span></a>
-      <a class="btn-floating btn waves-effect waves-light red" (click)="removeMatch(matchTeam.match.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
-      <ul class="collection with-header">
-        <li class="collection-item avatar col s6 m6 " style="display: inline-block;" *ngFor="let team of matchTeam.teams">
-          <img src="{{team.team.logoUrl}}" class="circle">
-          <a [routerLink]="['/team/show', team.team.id]"><span class="title" style=" text-transform: uppercase;">Team Name : {{team.team.name}}</span></a>
-        </li>
-      </ul>
+      <h4>Teams</h4></li>
+    <li class="collection-item avatar" *ngFor="let rowTeams of teams">
+      <img src="{{rowTeams.team.logoUrl}}" class="circle">
+      <a [routerLink]="['/team/show', rowTeams.team.id]"><span class="title" style=" text-transform: uppercase;">{{rowTeams.team.name}}</span></a>
+      <span class="title" style=" text-transform: uppercase;">{{rowTeams.points}}</span>
+      <a class="btn-floating btn waves-effect waves-light red" (click)="removeChildren(rowTeams.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
     </li>
   </ul>
+  <div>
+    <button md-button (click)="openDialog()">Add Team</button>
+  </div>
 </div>

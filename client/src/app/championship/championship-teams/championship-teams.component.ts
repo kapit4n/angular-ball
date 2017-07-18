@@ -7,9 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChampionshipTeamsComponent implements OnInit {
 
-	@Input() matchTeams: any[];
-	@Input() current: any;
-
+	@Input() teams: any[];
   constructor() { }
 
   ngOnInit() {

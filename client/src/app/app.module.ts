@@ -35,6 +35,7 @@ import { MatchResultUpdateComponent } from './match/match-result-update/match-re
 import { TeamAddPlayerComponent } from './team/team-add-player/team-add-player.component';
 import { GoalAddComponent } from './match/goal-add/goal-add.component';
 import { ChampionshipTeamsComponent } from './championship/championship-teams/championship-teams.component';
+import { ChampionshipMatchesComponent } from './championship/championship-matches/championship-matches.component';
 
 const appRoutes: Routes = [
   {
@@ -103,7 +104,8 @@ const appRoutes: Routes = [
     MatchResultUpdateComponent,
     TeamAddPlayerComponent,
     GoalAddComponent,
-    ChampionshipTeamsComponent
+    ChampionshipTeamsComponent,
+    ChampionshipMatchesComponent
   ],
   entryComponents: [ChampionshipAddTeamComponent, MatchAddTeamComponent, TeamAddPlayerComponent],
   imports: [

@@ -19,24 +19,10 @@
   </div>
   <ul>
     <li>
-      <app-championship-teams [matchTeams]="matchTeams" [current]="current"></app-championship-teams>
+      <app-championship-matches [matches]="matchTeams" [current]="current"></app-championship-matches>
     </li>
     <li>
-      <div>
-        <ul class="collection with-header">
-          <li class="collection-header">
-            <h4>Teams</h4></li>
-          <li class="collection-item avatar" *ngFor="let rowTeams of children">
-            <img src="{{rowTeams.team.logoUrl}}" class="circle">
-            <a [routerLink]="['/team/show', rowTeams.team.id]"><span class="title" style=" text-transform: uppercase;">{{rowTeams.team.name}}</span></a>
-            <span class="title" style=" text-transform: uppercase;">{{rowTeams.points}}</span>
-            <a class="btn-floating btn waves-effect waves-light red" (click)="removeChildren(rowTeams.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
-          </li>
-        </ul>
-        <div>
-          <button md-button (click)="openDialog()">Add Team</button>
-        </div>
-      </div>
+      <app-championship-teams [teams]="children"></app-championship-teams>
     </li>
   </ul>
 </div>
