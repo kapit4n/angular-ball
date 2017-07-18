@@ -34,6 +34,7 @@ import { PlayerComponent } from './player/player/player.component';
 import { MatchResultUpdateComponent } from './match/match-result-update/match-result-update.component';
 import { TeamAddPlayerComponent } from './team/team-add-player/team-add-player.component';
 import { GoalAddComponent } from './match/goal-add/goal-add.component';
+import { ChampionshipTeamsComponent } from './championship/championship-teams/championship-teams.component';
 
 const appRoutes: Routes = [
   {
@@ -101,7 +102,8 @@ const appRoutes: Routes = [
     PlayerComponent,
     MatchResultUpdateComponent,
     TeamAddPlayerComponent,
-    GoalAddComponent
+    GoalAddComponent,
+    ChampionshipTeamsComponent
   ],
   entryComponents: [ChampionshipAddTeamComponent, MatchAddTeamComponent, TeamAddPlayerComponent],
   imports: [
