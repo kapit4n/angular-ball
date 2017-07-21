@@ -14,15 +14,7 @@
         </div>
       </div>
     </div>
-    <ul class="collection with-header">
-      <li class="collection-header"><h4>Players</h4></li>
-      <li class="collection-item avatar" *ngFor="let rowPlayer of players">
-        <img src="{{rowPlayer.player.avatarUrl}}" class="circle">
-        <a [routerLink]="['/player/show', rowPlayer.player.id]" ><span class="title" style=" text-transform: uppercase;">{{rowPlayer.player.name}}</span></a>
-        <span class="title" style=" text-transform: uppercase;">{{rowPlayer.id}}</span>
-        <a class="btn-floating btn waves-effect waves-light red" (click)="removeChildren(rowPlayer.id)" routerLinkActive="active"><i class="material-icons">delete</i></a>
-      </li>
-    </ul>
+   <app-team-show-players [players]="players"></app-team-show-players>
 
     <div>
         <button md-button (click)="openDialogAddPlayer()">Add Player</button>
