@@ -21,7 +21,6 @@ import { TeamComponent } from './team/team/team.component';
 import { ChampionshipComponent } from './championship/championship/championship.component';
 import { ChampionshipAddTeamComponent } from './championship/championship-add-team/championship-add-team.component';
 import { MatchAddComponent } from './match/match-add/match-add.component';
-import { MatchEditComponent } from './match/match-edit/match-edit.component';
 import { MatchListComponent } from './match/match-list/match-list.component';
 import { MatchShowComponent } from './match/match-show/match-show.component';
 import { MatchComponent } from './match/match/match.component';
@@ -37,6 +36,7 @@ import { GoalAddComponent } from './match/goal-add/goal-add.component';
 import { ChampionshipTeamsComponent } from './championship/championship-teams/championship-teams.component';
 import { ChampionshipMatchesComponent } from './championship/championship-matches/championship-matches.component';
 import { TeamShowPlayersComponent } from './team/team-show-players/team-show-players.component';
+import { MatchEditComponent } from './match/match-edit/match-edit.component';
 
 const appRoutes: Routes = [
   {
@@ -75,8 +75,8 @@ const appRoutes: Routes = [
     children: [
       { path: '', component: PlayerListComponent },
       { path: 'add', component: PlayerAddComponent },
+      { path: 'edit/:id', component: PlayerEditComponent },
       { path: 'show/:id', component: PlayerShowComponent },
-      { path: 'edit/:id', component: PlayerEditComponent }
     ]
   },
   { path: '**', component: ChampionshipListComponent }
