@@ -1,35 +1,35 @@
-<md-sidenav-container [class.m2app-dark]="isDarkTheme">
-  <md-sidenav #sidenav mode="side" class="app-sidenav">
-    <md-list>
-      <h3 md-subheader>Championships</h3>
+<mat-sidenav-container [class.m2app-dark]="isDarkTheme">
+  <mat-sidenav #sidenav mode="side" class="app-sidenav">
+    <mat-list>
+      <h3 mat-subheader>Championships</h3>
       <a class="btn-floating btn waves-effect waves-light red" routerLink="/championship/add" routerLinkActive="active"><i class="material-icons">add</i></a>
       <a routerLink="/championship" routerLinkActive="active"><i class="material-icons">list</i></a>
-    </md-list>
-    <md-list>
-      <h3 md-subheader>Teams</h3>
+    </mat-list>
+    <mat-list>
+      <h3 mat-subheader>Teams</h3>
       <a class="btn-floating btn waves-effect waves-light red" routerLink="/team/add" routerLinkActive="active"><i class="material-icons">add</i></a>
       <a routerLink="/team" routerLinkActive="active"><i class="material-icons">list</i></a>
-    </md-list>
-    <md-list>
-      <h3 md-subheader>Players</h3>
+    </mat-list>
+    <mat-list>
+      <h3 mat-subheader>Players</h3>
       <a class="btn-floating btn waves-effect waves-light red" routerLink="/player/add" routerLinkActive="active"><i class="material-icons">add</i></a>
       <a routerLink="/player" routerLinkActive="active"><i class="material-icons">list</i></a>
-    </md-list>
-    <md-list>
-      <h3 md-subheader>Matches</h3>
+    </mat-list>
+    <mat-list>
+      <h3 mat-subheader>Matches</h3>
       <a class="btn-floating btn waves-effect waves-light red" routerLink="/match/add" routerLinkActive="active"><i class="material-icons">add</i></a>
       <a routerLink="/match" routerLinkActive="active"><i class="material-icons">list</i></a>
-    </md-list>
-  </md-sidenav>
-  <md-toolbar color="primary">
+    </mat-list>
+  </mat-sidenav>
+  <mat-toolbar color="primary">
     <button class="app-icon-button" (click)="sidenav.toggle()">
       <i class="material-icons">menu</i>
     </button>
     Sport News
     <span class="app-toolbar-filler"></span>
-  </md-toolbar>
+  </mat-toolbar>
   <div class="card-panel indigo lighten-1 app-content">
     <router-outlet></router-outlet>
   </div>
-</md-sidenav-container>
+</mat-sidenav-container>
  

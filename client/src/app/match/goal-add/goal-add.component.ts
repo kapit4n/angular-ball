@@ -7,7 +7,7 @@ import { TeamMatchApi }            from '../../../../sdk/services';
 import { ChampionshipRowApi }            from '../../../../sdk/services';
 import { Match, TeamMatch, MatchGoal }  from '../../../../sdk/models';
 import { LoadDataInterface } from '../../loadDataInterface'
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { TeamAddPlayerComponent } from '../../team/team-add-player/team-add-player.component';
 
 @Component({
@@ -24,7 +24,7 @@ export class GoalAddComponent implements OnInit, LoadDataInterface {
   championship: any;
   player: any;
   constructor(private activatedRoute: ActivatedRoute, private dataApi : MatchGoalApi,
-    public dialog: MdDialog, private teamMatchApi: TeamMatchApi, private matchGoalApi: MatchGoalApi,
+    public dialog: MatDialog, private teamMatchApi: TeamMatchApi, private matchGoalApi: MatchGoalApi,
     private championshipRowApi: ChampionshipRowApi) {
     this.match = { matchDate: "12/12/2017", id: ""};
     this.championship =  { id: "1", name: "name"};
@@ -45,7 +45,7 @@ export class GoalAddComponent implements OnInit, LoadDataInterface {
 
   openDialogAddPlayer() {
     var self = this;
-    let dialogRef:MdDialogRef<TeamAddPlayerComponent> = this.dialog.open(TeamAddPlayerComponent, {height: '400px', width: '700px'});
+    let dialogRef:MatDialogRef<TeamAddPlayerComponent> = this.dialog.open(TeamAddPlayerComponent, {height: '400px', width: '700px'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log(result);

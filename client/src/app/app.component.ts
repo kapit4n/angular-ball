@@ -1,5 +1,5 @@
 import { Component, Optional } from '@angular/core';
-import { MdDialog,MdSidenavContainer, MdSidenav, MdToolbar, MdList, MdDialogRef, MdSnackBar} from '@angular/material';
+import { MatDialog,MatSidenavContainer, MatSidenav, MatToolbar, MatList, MatDialogRef, MatSnackBar} from '@angular/material';
 import { TeamAddComponent } from './team/team-add/team-add.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
 import { LoopBackConfig } from '../../sdk/index';
@@ -18,7 +18,7 @@ export class AppComponent {
   lastDialogResult: string;
   user: User = new User();
 
-  constructor(private _dialog: MdDialog, private _snackbar: MdSnackBar,
+  constructor(private _dialog: MatDialog, private _snackbar: MatSnackBar,
               private userApi: UserApi, private teamApi : TeamApi) {
     LoopBackConfig.setBaseURL('http://127.0.0.1:3000');
     LoopBackConfig.setApiVersion('api');
@@ -67,5 +67,5 @@ export class AppComponent {
   `,
 })
 export class DialogContent {
-  constructor(@Optional() public dialogRef: MdDialogRef<DialogContent>) { }
+  constructor(@Optional() public dialogRef: MatDialogRef<DialogContent>) { }
 }

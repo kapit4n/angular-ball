@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ChampionshipApi, ChampionshipRowApi, TeamChampionshipRowApi, MatchApi }            from '../../../../sdk/services';
 import { Championship, Team, TeamChampionshipRow, ChampionshipRow, Match }  from '../../../../sdk/models';
 import { LoadDataWithChildrenInterface } from '../../loadDataInterface'
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { ChampionshipAddTeamComponent } from './../championship-add-team/championship-add-team.component';
 
 @Component({
@@ -27,7 +27,7 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
   constructor(private activatedRoute: ActivatedRoute, private dataApi: ChampionshipApi,
               private childrenApi: TeamChampionshipRowApi,
               private currentRowApi: ChampionshipRowApi, private matchApi: MatchApi,
-              public dialog: MdDialog) {
+              public dialog: MatDialog) {
     this.data = {name: "", logoUrl: "", description: ""};
     this.children = [];
     this.matches = [];
@@ -43,7 +43,7 @@ export class ChampionshipShowComponent implements OnInit, LoadDataWithChildrenIn
   openDialog() {
     var self = this;
 
-    let dialogRef:MdDialogRef<ChampionshipAddTeamComponent> = this.dialog.open(ChampionshipAddTeamComponent, {height: '400px', width: '700px'});
+    let dialogRef:MatDialogRef<ChampionshipAddTeamComponent> = this.dialog.open(ChampionshipAddTeamComponent, {height: '400px', width: '700px'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         let data = {"championshipRowId": self.current.id, "teamId": result.id, "subDate": new Date(), "points": "10"};

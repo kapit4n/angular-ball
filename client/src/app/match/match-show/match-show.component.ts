@@ -7,7 +7,7 @@ import { MatchGoalApi }            from '../../../../sdk/services';
 import { ChampionshipRowApi }            from '../../../../sdk/services';
 import { Match, TeamMatch }  from '../../../../sdk/models';
 import { LoadDataInterface } from '../../loadDataInterface'
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { MatchAddTeamComponent } from '../match-add-team/match-add-team.component';
 
 @Component({
@@ -26,7 +26,7 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
   goals: any[];
 
   constructor(private activatedRoute: ActivatedRoute, private dataApi : MatchApi,
-    public dialog: MdDialog, private teamMatchApi: TeamMatchApi, 
+    public dialog: MatDialog, private teamMatchApi: TeamMatchApi, 
     private matchGoalApi: MatchGoalApi, private championshipRowApi: ChampionshipRowApi) {
     this.data = { match: {matchDate: "12/12/2017", id: ""}, championship: {id: "1", name: "name"}};
     this.teamA = {id: "2", goals: "2", team: {logoUrl: ""}};
@@ -40,7 +40,7 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
 
   openDialogAddLocalTeam() {
     var self = this;
-    let dialogRef:MdDialogRef<MatchAddTeamComponent> = this.dialog.open(MatchAddTeamComponent, {height: '400px', width: '700px'});
+    let dialogRef:MatDialogRef<MatchAddTeamComponent> = this.dialog.open(MatchAddTeamComponent, {height: '400px', width: '700px'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log("This is something that you should work");
@@ -55,7 +55,7 @@ export class MatchShowComponent implements OnInit, LoadDataInterface {
 
   openDialogVisitorTeam() {
     var self = this;
-    let dialogRef:MdDialogRef<MatchAddTeamComponent> = this.dialog.open(MatchAddTeamComponent, {height: '400px', width: '700px'});
+    let dialogRef:MatDialogRef<MatchAddTeamComponent> = this.dialog.open(MatchAddTeamComponent, {height: '400px', width: '700px'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         let data = {"matchId": self.id, "teamId": result.id, "goals": "10"};

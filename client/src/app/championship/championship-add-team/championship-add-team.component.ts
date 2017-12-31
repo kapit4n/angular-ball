@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { TeamApi }            from '../../../../sdk/services';
 import { LoadListDataInterface } from '../../loadListDataInterface'
 import { Team }  from '../../../../sdk/models';
@@ -12,7 +12,7 @@ import { ChampionshipListComponent } from './../championship-list/championship-l
 })
 export class ChampionshipAddTeamComponent implements OnInit, LoadListDataInterface {
   data = [];
-  constructor(public dialogRef: MdDialogRef<ChampionshipAddTeamComponent>, private dataApi: TeamApi) {}
+  constructor(public dialogRef: MatDialogRef<ChampionshipAddTeamComponent>, private dataApi: TeamApi) {}
 
   ngOnInit() {
   	this.loadData();

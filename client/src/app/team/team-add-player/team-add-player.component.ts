@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { PlayerApi }            from '../../../../sdk/services';
 import { LoadListDataInterface } from '../../loadListDataInterface'
 import { Player }  from '../../../../sdk/models';
@@ -11,7 +11,7 @@ import { Player }  from '../../../../sdk/models';
 })
 export class TeamAddPlayerComponent implements OnInit, LoadListDataInterface {
   data = [];
-  constructor(public dialogRef: MdDialogRef<TeamAddPlayerComponent>, private dataApi: PlayerApi) {}
+  constructor(public dialogRef: MatDialogRef<TeamAddPlayerComponent>, private dataApi: PlayerApi) {}
 
   ngOnInit() {
   	this.loadData();
